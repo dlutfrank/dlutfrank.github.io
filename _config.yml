@@ -12,24 +12,23 @@ excerpt_separator: "[-----]"
 
 # mode: dev
 mode: product
-url: https://unifreak.github.io/
+url: https://dlutfrank.github.io/
 devurl: http://localhost:4000/
-name: UniFreak
-title: UniFreak | Another yet unique freak is showing a freakshow
-description: "Fanghao's personal weblog, on coding or such stuff"
+name: xing
+title: xing | Another yet unique freak is showing a freakshow
+description: "xing's personal weblog, on coding or such stuff"
 
 my:
-    displayName: UniFreak
-    realName: FangHao
-    realName_cn: 方浩
-    jobTitle: "PHP Coder"
+    displayName: xing
+    realName: Wenxing 
+    realName_cn: 文兴
+    jobTitle: "Andorid Coder"
     contact:
-        qq: 744910240
-        email: fanghao90s@gmail.com
-        github: http://www.github.com/UniFreak
-        qzone: http://744910240.qzone.qq.com
+        qq: 369388067
+        email: dlut.xing@gmail.com
+        github: http://www.github.com/dlutfrank
         pinterest: https://www.pinterest.com/miblah/
-        tel: 15671542698
+#        tel: 15671542698
         address:
             country: China
             state: Hubei
