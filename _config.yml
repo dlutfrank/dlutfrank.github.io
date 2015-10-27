@@ -31,11 +31,11 @@ my:
         tel: 15210819651
         address:
             country: China
-            state: Hubei
-            city: Wuhan
-            distribute: Hongshan
-            postcode: 450000
-            cell: "XuefuJiayuan"
+            state: Beijing
+            city: Beijing
+            distribute: Haidian
+            postcode: 100086
+            cell: "Qinghe"
     skills:
         frontend: ["HTML | Markdown", "CSS | SASS", "JS | jQuery", "Bootstrap"]
         backend: ["PHP", "MySQL", "Redis", "Regex", "Laravel", "OSC"]
