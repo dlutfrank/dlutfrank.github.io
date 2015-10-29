@@ -10,7 +10,7 @@ excerpt: Markdown的简单使用
 {:toc}
 
 Markdown的语法和emacs中org模式的语法很接近，都非常的简单。如果你之前有
-用过emacs中的org模式，那么你会发现你在使用Markdown的过程中如鱼得水。
+用过emacs中的org模式，那么你会发现掌握Markdown易如反掌。
 
 ---
 
