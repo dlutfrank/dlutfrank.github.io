@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Markdown使用
+title: Markdown的使用
 date: 2015-10-30 13:21:00
 categories: blog
 excerpt: Markdown的简单使用
@@ -9,7 +9,8 @@ excerpt: Markdown的简单使用
 * content
 {:toc}
 
-Markdown的语法和emacs中org模式的语法很接近，都非常的简单。
+Markdown的语法和emacs中org模式的语法很接近，都非常的简单。如果你之前有
+用过emacs中的org模式，那么你会发现你在使用Markdown的过程中如鱼得水。
 
 ---
 
@@ -22,7 +23,7 @@ Markdown的语法和emacs中org模式的语法很接近，都非常的简单。
     [链接文字](连接url)
 	eg: [小米](http://www.mi.com)
 	
-例子的效果是这样:
+例子的效果是这样的:
 
 [小米](http://www.mi.com)
 
