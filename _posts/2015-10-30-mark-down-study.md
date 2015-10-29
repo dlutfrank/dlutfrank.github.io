@@ -9,8 +9,6 @@ excerpt: Markdown的简单使用
 * content
 {:toc}
 
-## 源起
-
 Markdown的语法和emacs中org模式的语法很接近，都非常的简单。
 
 ---
