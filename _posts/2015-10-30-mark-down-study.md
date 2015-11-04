@@ -49,9 +49,61 @@ Markdown的语法和emacs中org模式的语法很接近，都非常的简单。�
 
 看上去相当赞。
 
-### 高亮文字
+### 文字修饰
 
-需要高亮的文字用两个\`包起来，eg:\`高亮文字\`,效果为是`高亮文字`。
+需要高亮的文字用两个\`包起来，两个星号`*`和下划线`_`包含的文字会变成斜体，四个星号和下划线包含的文字会变成粗体。
+
+    `高亮文字`
+	
+    *Hello* _Markdown_
+	
+	**Hi** __Github__
+
+效果如下:
+
+`高亮文字`
+
+*Hello* _Markdown_
+
+**Hi** __Github__
+
+### 段落引用
+
+要引用某段文字，只需要在段落前加上`>`,如果需要将多个段落连起来一起引用，则在段落之间的空行也需要加上\>标记。
+
+\> I have a dream that one day this nation will rise up, live up to the true meaning of its creed: “We hold these truths to be self-evident; that all men are created equal.”
+
+\>
+
+\> I have a dream that one day on the red hills of Georgia the sons of former slaves and the sons of former slave-owners will be able to sit down together at the table of brotherhood.
+
+效果如下:
+
+> I have a dream that one day this nation will rise up, live up to the true meaning of its creed: “We hold these truths to be self-evident; that all men are created equal.”
+>
+> I have a dream that one day on the red hills of Georgia the sons of former slaves and the sons of former slave-owners will be able to sit down together at the table of brotherhood.
+
+### 使用列表
+
+Markdown中可以使用无序列表和有序列表，无序列表用星号`*`，加号`+`，减号`-`作为行首标记。有序列表使用`数字`接一个英文句号`.`作为行首标记，标记后面需要空一格。
+
+    * 第一列
+	+ 第二列
+	- 第三列
+
+    1. 第一列
+	2. 第二列
+	3. 第三列
+    
+效果如下：
+	
+* 第一列
++ 第二列
+- 第三列
+
+1. 第一列
+2. 第二列
+3. 第三列
 
 ### 字符转义
 
