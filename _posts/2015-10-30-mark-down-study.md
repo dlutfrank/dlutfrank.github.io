@@ -28,7 +28,7 @@ Markdown的语法和emacs中org模式的语法很接近，都非常的简单。�
 
 ### 插入图片
 
-插入图片的格式也很简单，只需要输入`![alt文字](图片地址)`就能插入图片，用这种方式在Markdown插入图片是没法指定图片的宽和高的，不过可以使用[七牛](http://www.qiniu.com/)做为图床，然后使用七牛提供的[图片接口](http://developer.qiniu.com/docs/v6/api/reference/fop/image/imageview2.html)返回指定宽高的图片。
+插入图片的格式也很简单，只需要输入`![alt文字](图片地址)`就能插入图片，用这种方式在Markdown插入图片是没法指定图片的宽和高的，不过可以使用[七牛](http://www.qiniu.com/)做为图床，然后使用七牛提供的[图片接口](http://developer.qiniu.com/docs/v6/api/reference/fop/image/imageview2.html#imageView2-specification)返回指定宽高的图片。
 
     使用原图:
     ![Alt文字](http://7xntab.com1.z0.glb.clouddn.com/xxx/xxx.JPG)
@@ -113,10 +113,30 @@ Markdown中可以使用无序列表和有序列表，无序列表用星号`*`，
 
 ## emacs中编写Markdown
 
+通过emacs的markdown模式能非常方便的编辑Markdown格式的文件，首先需要下载[markdown-mode.el](http://jblevins.org/projects/markdown-mode/markdown-mode.el)，然后将markdown-mode.el文件放入emacs的加载路径下，比如*~/.emacs.d/*文件夹中，最后在`.emacs`中加入以下代码，使得emacs在打开`.md`,`.markdown`,`.text`文件的时候自动使用markdown模式。
+
+    (autoload 'markdown-mode "markdown-mode"
+    "Major mode for editing Markdown files" t)
+    (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+    (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+    (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+### 快捷键
+
+|快捷键     |作用     |Markdown符号 |
+|----------|:------:|:------:|
+|C-c C-t 数字| 标题| \# \#|
+|C-c C-s e |斜体|\* \*|
+|C-c C-s s |粗体|\*\* \*\*|
+|C-c C-s b|引用|\>|
+|C-c C-i i|插入图片|!\[\]\(\)|
+|C-c C-a l|插入链接|\[\]\(\)|
+|C-c -|插入水平线|------|
+
+有些快捷键使用起来还不如直接使用Markdown符号方便，比如引用快捷键。我经常使用到的快捷键只有插入标题，插入图片，插入链接和插入水平线。
+
 ---
 
-## 用Markdown写博客
+## 参考文献
 
----
-
-## 总结
+* [Emacs Markdown Mode](http://jblevins.org/projects/markdown-mode/)
