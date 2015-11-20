@@ -87,7 +87,7 @@ excerpt: 在github上搭建静态的博客
 每次将文章添加到\_post文件夹中后，通过git将文章从本地同步到Github来实现发布新的文章。
 
     $git add .
-	$git commit -m "new papaer"
+	$git commit -m "new paper"
 	$git push origin master
 
 ---
