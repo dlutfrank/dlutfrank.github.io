@@ -17,11 +17,11 @@ excerpt: 在github上搭建静态的博客
 
 ### 准备
 
-搭建博客过程中必须要用到的有 `git`，和`Github账号`，git可以直接去[git官网](http://git-scm.com/download/)下载，Github账号需要在[Github](https://github.com)上面注册。Github的博客系统使用的是`jekyll`的引擎，为了方便调试，最好在本地安装一个[jekyll](http://jekyll.bootcss.com/)。
+搭建博客过程中必须要用到的有 `git`，和`Github账号`，git可以直接去[git官网](http://git-scm.com/download/)下载，Github账号需要在[Github](https://github.com)上面注册。Github的博客系统使用的是`jekyll`的引擎，为了方便本地调试，最好在本地安装一个[jekyll](http://jekyll.bootcss.com/)。安装jekyll并不是必须的，如果嫌麻烦可以不安装。
 
 ### 流程
 
-整个流程分为注册Github账号，搭建本地博客环境，撰写博文，将文章推送到Github等几个步骤。
+核心流程分为注册Github账号，在Github上建立博客仓库，撰写博文，将文章推送到Github等几个步骤，整个流程可以参考[Pages官网](https://pages.github.com/)。
 
 #### 注册账号
 
@@ -33,20 +33,51 @@ excerpt: 在github上搭建静态的博客
 
 #### 克隆仓库
 
-在Github上创建仓库后，需要将仓库clone到本地，以便在本地使用自己顺手的工具来撰写文章，然后推送到Github上，这里需要用到git来操作仓库，从Github上clone仓库到发布博文的步骤如下：
+在Github上创建仓库后，需要将仓库clone到本地，以便在本地使用自己顺手的工具来撰写文章。
 
     $git clone https://github.com/username/username.github.io.git
+
+#### 发布主页
+
+进入本地博客根目录，创建index.html文件，然后推送到远程仓库中。
+
 	$cd username.github.io
 	$echo "my blog" > index.html
 	$git add .	
 	$git commit -m "add blog file"
 	$git push origin master
 
-做完这些步骤后，就能通过博客的域名访问你刚才推送的index.html网页了。
-	
-如果每次写文章的时候都需要自己写html文件，将会相当麻烦，幸好Jekyll引擎能解析Markdown编写的文件，所以我们只需要用Markdown编写好文章，然后推送到博客仓库就可以了。
+做完这些步骤后，就能通过博客的域名访问你刚才推送的index.html网页了，至此，搭建博客就算初步完成了。但是，如果发布博客的时候，每次写文章都需要写html文件，同时编辑index文件来导航到我们的每一篇文章，将会相当麻烦，幸好Jekyll将这两个难题都解决了。我们可以在本地编写符合Jekyll规范的网站源码，然后上传的Github上，这样就能够简单方便的发布博文了。
 
-#### 搭建本地环境
+### 创建Jekyll规范的站点
+
+为了方便撰写博客文章，同时也为了方便对文章进行管理，我们需要创建符合Jekyll规范的站点,Jekyll最主要的文件和文件夹如下：
+
+    _config.yml    整个系统的配置文件
+	_includes      放头文件的文件夹，一般会被_layouts文件夹中的文件使用
+	_layouts       放布局文件的文件夹，写文章的时候采用里面的布局文件
+	_posts         放文章的文件夹	
+	index.html    博客系统主页面
+
+#### 使用现有模板
+
+为了让自己的博客看起好看一点，或者为了更省事一些，可以在网上搜索一下各种Jekyll theme，然后应用在自己的博客上，[Jekyll Themes](http://jekyllthemes.org)上面提供了很多主题,我这里使用的是[HyG的博客](https://github.com/Gaohaoyang/gaohaoyang.github.io)的主题。
+
+#### 撰写博文
+
+博客搭建完了后只需要将文件放在\_post文件夹中，同步到远程仓库，就可以通过浏览器访问了，\_post文件夹中的文件名必须符合`2015-11-3-file-name.md`这样的格式才会被视为有效的文件。
+
+#### 发布文章
+
+每次将文章添加到\_post文件夹中后，通过git将文章从本地同步到Github来实现发布新的文章。
+
+    $git add .
+	$git commit -m "new paper"
+	$git push origin master
+
+---
+
+## 搭建本地环境(可省略)
 
 为了更方便的在本地预览博客，可以在本地安装Jekyll,安装Jekyll也相当简单，只需要在终端输入
 
@@ -61,34 +92,20 @@ excerpt: 在github上搭建静态的博客
     $cd username.github.io
 	$jekyll new .
 
-这时username.github.io文件夹中会多出这些文件和文件夹。
+这时username.github.io文件夹中会自动创建出下列文件和文件夹。
 
     _config.yml    整个系统的配置文件
 	_includes      放头文件的文件夹，一般会被_layouts文件夹中的文件使用
 	_layouts       放布局文件的文件夹，写文章的时候采用里面的布局文件
 	_posts         放文章的文件夹	
 	_site          jekyll生成的站点文件夹，可以不推送到远程仓库
-	_index.html    博客系统主页面
+	index.html    博客系统主页面
 
 用终端进入username.github.io文件夹，输入
 
     $jekyll serve
 
-就会启动本地的博客服务器，通过浏览器访问[博客](http://localhost:4000)就可以看到jekyll创建博客的主页了。
-
-为了让自己的博客看起好看一点，可以在网上搜索一下各种Jekyll theme，然后应用在自己的博客上，[Jekyll Themes](http://jekyllthemes.org)上面提供了很多主题,我这里使用的是[HyG的博客](https://github.com/Gaohaoyang/gaohaoyang.github.io)的主题。
-
-#### 撰写博文
-
-博客搭建完了后只需要将文件放在\_post文件夹中，同步到远程仓库，就可以通过浏览器访问了，\_post文件夹中的文件名必须符合`2015-11-3-file-name.md`这样的格式才会被视为有效的文件。
-
-#### 发布文章
-
-每次将文章添加到\_post文件夹中后，通过git将文章从本地同步到Github来实现发布新的文章。
-
-    $git add .
-	$git commit -m "new paper"
-	$git push origin master
+就会启动本地的博客服务器，通过浏览器访问`http://localhost:4000`就可以看到jekyll创建博客的主页了。
 
 ---
 
