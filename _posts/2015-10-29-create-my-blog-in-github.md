@@ -59,9 +59,15 @@ excerpt: 在github上搭建静态的博客
 	_posts         放文章的文件夹	
 	index.html    博客系统主页面
 
+`_config.yml`文件为博客网站系统的配置文件，在该文件中可以设置一些变量，然后写博客的时候就可以直接引用了。例如配置变量`title:myblog`，在博客中就可以通`{{site.title}}`访问该变量。
+
+
+
+`_includes`文件夹中存放一些被其他文件引用的公共文件，主要是为了模块化和统一风格用。
+
 #### 使用现有模板
 
-为了让自己的博客看起好看一点，或者为了更省事一些，可以在网上搜索一下各种Jekyll theme，然后应用在自己的博客上，[Jekyll Themes](http://jekyllthemes.org)上面提供了很多主题,我这里使用的是[HyG的博客](https://github.com/Gaohaoyang/gaohaoyang.github.io)的主题。
+如果嫌麻烦不想自己去创建站点，或者觉得自己创建的站点不够漂亮，可以在网上搜索一下各种Jekyll theme，然后应用在自己的博客上，[Jekyll Themes](http://jekyllthemes.org)上面提供了很多主题,我这里使用的是[HyG的博客](https://github.com/Gaohaoyang/gaohaoyang.github.io)的主题，搜索到自己满意的主题后，将其下载下来，然后覆盖自己的博客根目录，删掉_posts文件夹内别人的文章，然后更新一下网站信息，做完这些后，上传到Github上就可以了。
 
 #### 撰写博文
 
@@ -92,7 +98,7 @@ excerpt: 在github上搭建静态的博客
     $cd username.github.io
 	$jekyll new .
 
-这时username.github.io文件夹中会自动创建出下列文件和文件夹。
+这时username.github.io文件夹中会自动创建出下列文件和文件夹,包含了所有Jekyll所需要的文件和文件夹。
 
     _config.yml    整个系统的配置文件
 	_includes      放头文件的文件夹，一般会被_layouts文件夹中的文件使用
