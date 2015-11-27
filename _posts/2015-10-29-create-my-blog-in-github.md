@@ -83,8 +83,7 @@ excerpt: 在github上搭建静态的博客
 >			
    \<body\>
 >		
-   \{ % include header.html %\}
-   
+   \{ % include header.html %\}   
 >			
    \{\{ content \}\}
 >			
