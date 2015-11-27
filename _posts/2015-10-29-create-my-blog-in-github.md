@@ -59,23 +59,69 @@ excerpt: 在github上搭建静态的博客
 	_posts         放文章的文件夹	
 	index.html    博客系统主页面
 
-`_config.yml`文件为博客网站系统的配置文件，在该文件中可以设置一些变量，然后写博客的时候就可以直接引用了。例如配置变量`title:myblog`，在博客中就可以通`{{site.title}}`访问该变量。
+`_config.yml`文件为博客网站系统的配置文件，在该文件中可以设置一些变量，然后写博客的时候就可以直接引用了。例如配置变量`title:myblog`，在博客中就可以通\{\{site.title\}\}访问该变量。
 
+`_includes`文件夹中存放一些被其他文件引用的公共文件，主要是为了模块化和统一风格用。例如可以新建一个head.html的文件来控制页面标题的显示，内容如下：
 
+> \<head\>
+>
+   \<meta charset="utf-8"\>
+>
+   \<title\>\{ % if page.title %\}\{\{ page.title \}\}\{ % else %\}\{\{ site.title \}\}\{ % endif %\}\</title\>
+>
+   \</head\>
+  
+`page.title`表示当前页面的标题，该语句表示如果当前页面设置了标题，就显示当前页面的标题，否则显示站点的标题。
 
-`_includes`文件夹中存放一些被其他文件引用的公共文件，主要是为了模块化和统一风格用。
+`_layouts`中存放的是页面布局文件，对于相同风格的页面可以使用同一布局文件。比如：
+
+> \<\!DOCTYPE html\>
+>	
+  \<html\>
+>
+   \{ % include head.html %\}
+>			
+   \<body\>
+>		
+   \{ % include header.html %\}
+   
+>			
+   \{\{ content \}\}
+>			
+   \</body\>
+>		
+   \</html\>
+>	
+
+该布局文件中使用了_includes文件夹中的head.html文件来统一标题风格，`content`为文章的内容部分。
+
+`_posts`中存放的是博客文件，_post文件夹中的文件名必须符合`2015-11-3-file-name.md`这样的格式才会被视为有效的文件，比如：
+
+    ---
+    layout: post
+    title: 在Github上搭建博客
+    date: 2015-10-29 13:21:00
+    categories: blog
+    excerpt: 在github上搭建静态的博客
+    ---
+
+    ## 搭建博客
+
+每篇文章的开头必须有上面的描述信息，`layout`表示使用的是`_layouts`中的哪个布局文件，`title`为该页面的标题，后面的三项可以省略。
+
+`index.html`为博客主页，用来导航到网站的其他页面。
 
 #### 使用现有模板
 
-如果嫌麻烦不想自己去创建站点，或者觉得自己创建的站点不够漂亮，可以在网上搜索一下各种Jekyll theme，然后应用在自己的博客上，[Jekyll Themes](http://jekyllthemes.org)上面提供了很多主题,我这里使用的是[HyG的博客](https://github.com/Gaohaoyang/gaohaoyang.github.io)的主题，搜索到自己满意的主题后，将其下载下来，然后覆盖自己的博客根目录，删掉_posts文件夹内别人的文章，然后更新一下网站信息，做完这些后，上传到Github上就可以了。
+如果嫌麻烦不想自己去创建站点，或者觉得自己创建的站点不够漂亮，可以在网上搜索一下各种Jekyll theme，然后应用在自己的博客上，[Jekyll Themes](http://jekyllthemes.org)上面提供了很多主题,我这里使用的是[HyG的博客](https://github.com/Gaohaoyang/gaohaoyang.github.io)的主题，搜索到自己满意的主题后，将其下载下来，然后覆盖自己的博客根目录，删掉_posts文件夹内别人的文章，然后修改一下网站的配置信息，注明主题的开发者，做完这些后，上传到Github上就可以了。
 
 #### 撰写博文
 
-博客搭建完了后只需要将文件放在\_post文件夹中，同步到远程仓库，就可以通过浏览器访问了，\_post文件夹中的文件名必须符合`2015-11-3-file-name.md`这样的格式才会被视为有效的文件。
+博客搭建完了后只需要将文件放在_post文件夹中，同步到远程仓库，就可以通过浏览器访问了。
 
 #### 发布文章
 
-每次将文章添加到\_post文件夹中后，通过git将文章从本地同步到Github来实现发布新的文章。
+每次将文章添加到_post文件夹中后，通过git将文章从本地同步到Github来实现发布新的文章，比如：
 
     $git add .
 	$git commit -m "new paper"
