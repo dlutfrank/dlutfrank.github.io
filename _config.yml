@@ -13,6 +13,8 @@ description: 文兴的博客
 github_username:  dlutfrank
 permalink: /:year/:month/:day/:title/
 
+favicon: /pics/title_icon.icon
+
 # Build settings
 markdown: kramdown
 
