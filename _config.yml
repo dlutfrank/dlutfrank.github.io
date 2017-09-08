@@ -1,7 +1,7 @@
 # Site settings
 title: dlut.xing
 email: dlut.xing@gmail.com
-description: 文兴的博客
+description: 沈文兴的主站
 # > # this means to ignore newlines until "baseurl:"
 #   Write an awesome description for your new site here. You can edit this
 #   line in _config.yml. It will appear in your document head meta (for
@@ -18,8 +18,16 @@ favicon: /pics/title_icon.icon
 # Build settings
 markdown: kramdown
 
+plugins: [jekyll-paginate]
+
 paginate: 10
-paginate_path: "page:num"
+paginate_path: page:num
+
+#set time zone
+timezone: Asia/Shanghai
+
+comments :
+    provider : uyan
 
 # highlight
 # 本地用rouge, github上用pygments
