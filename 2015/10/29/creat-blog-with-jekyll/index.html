@@ -95,17 +95,17 @@
 
 
 
-<meta name="description" content="content{:toc}  一直以来都想搭建一个属于自己的博客，在上面放一些自己东西，搭建博客虽说不是很难，但还是繁琐，需要自己去购买虚拟服务器、购买域名、将博客程序部署在虚拟服务器上，搭建完成后维护的工作也并不轻松，对于我这种比较懒的人来说简直不能忍受。工作过程中，接触Github有了一段时间，在浏览的时候发现Github上能托管自己的博客，稍微了解了一下，发现对于码农来说，让博客run起来">
+<meta name="description" content="content  [TOC] 一直以来都想搭建一个属于自己的博客，在上面放一些自己东西，搭建博客虽说不是很难，但还是繁琐，需要自己去购买虚拟服务器、购买域名、将博客程序部署在虚拟服务器上，搭建完成后维护的工作也并不轻松，对于我这种比较懒的人来说简直不能忍受。工作过程中，接触Github有了一段时间，在浏览的时候发现Github上能托管自己的博客，稍微了解了一下，发现对于码农来说，让博客run起来">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在Github上搭建博客">
 <meta property="og:url" content="http://yoursite.com/2015/10/29/creat-blog-with-jekyll/index.html">
 <meta property="og:site_name" content="shenwenxing&#39;s blog">
-<meta property="og:description" content="content{:toc}  一直以来都想搭建一个属于自己的博客，在上面放一些自己东西，搭建博客虽说不是很难，但还是繁琐，需要自己去购买虚拟服务器、购买域名、将博客程序部署在虚拟服务器上，搭建完成后维护的工作也并不轻松，对于我这种比较懒的人来说简直不能忍受。工作过程中，接触Github有了一段时间，在浏览的时候发现Github上能托管自己的博客，稍微了解了一下，发现对于码农来说，让博客run起来">
+<meta property="og:description" content="content  [TOC] 一直以来都想搭建一个属于自己的博客，在上面放一些自己东西，搭建博客虽说不是很难，但还是繁琐，需要自己去购买虚拟服务器、购买域名、将博客程序部署在虚拟服务器上，搭建完成后维护的工作也并不轻松，对于我这种比较懒的人来说简直不能忍受。工作过程中，接触Github有了一段时间，在浏览的时候发现Github上能托管自己的博客，稍微了解了一下，发现对于码农来说，让博客run起来">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-08T07:34:51.000Z">
+<meta property="og:updated_time" content="2017-09-08T08:25:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在Github上搭建博客">
-<meta name="twitter:description" content="content{:toc}  一直以来都想搭建一个属于自己的博客，在上面放一些自己东西，搭建博客虽说不是很难，但还是繁琐，需要自己去购买虚拟服务器、购买域名、将博客程序部署在虚拟服务器上，搭建完成后维护的工作也并不轻松，对于我这种比较懒的人来说简直不能忍受。工作过程中，接触Github有了一段时间，在浏览的时候发现Github上能托管自己的博客，稍微了解了一下，发现对于码农来说，让博客run起来">
+<meta name="twitter:description" content="content  [TOC] 一直以来都想搭建一个属于自己的博客，在上面放一些自己东西，搭建博客虽说不是很难，但还是繁琐，需要自己去购买虚拟服务器、购买域名、将博客程序部署在虚拟服务器上，搭建完成后维护的工作也并不轻松，对于我这种比较懒的人来说简直不能忍受。工作过程中，接触Github有了一段时间，在浏览的时候发现Github上能托管自己的博客，稍微了解了一下，发现对于码农来说，让博客run起来">
 
 
 
@@ -328,8 +328,9 @@
 
       
         <ul>
-<li>content<br>{:toc}</li>
+<li>content</li>
 </ul>
+<p>[TOC]</p>
 <p>一直以来都想搭建一个属于自己的博客，在上面放一些自己东西，搭建博客虽说不是很难，但还是繁琐，需要自己去购买虚拟服务器、购买域名、将博客程序部署在虚拟服务器上，搭建完成后维护的工作也并不轻松，对于我这种比较懒的人来说简直不能忍受。工作过程中，接触Github有了一段时间，在浏览的时候发现Github上能托管自己的博客，稍微了解了一下，发现对于码农来说，让博客run起来比以前容易多了。于是，在工作之余，抽出空闲时间，搭建了自己的博客。</p>
 <hr>
 <h2 id="搭建过程"><a href="#搭建过程" class="headerlink" title="搭建过程"></a>搭建过程</h2><h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>搭建博客过程中必须要用到的有 <code>git</code>，和<code>Github账号</code>，git可以直接去<a href="http://git-scm.com/download/" target="_blank" rel="external">git官网</a>下载，Github账号需要在<a href="https://github.com" target="_blank" rel="external">Github</a>上面注册。Github的博客系统使用的是<code>jekyll</code>的引擎，为了方便本地调试，最好在本地安装一个<a href="http://jekyll.bootcss.com/" target="_blank" rel="external">jekyll</a>。安装jekyll并不是必须的，如果嫌麻烦可以不安装。</p>
@@ -354,9 +355,10 @@
 <p>   \<body\></body\></p>
 <p>   { % include header.html %}</p>
 <p>   <ul>
-<li>content<br>{:toc}</li>
+<li>content</li>
 </ul>
-</p><p>一直以来都想搭建一个属于自己的博客，在上面放一些自己东西，搭建博客虽说不是很难，但还是繁琐，需要自己去购买虚拟服务器、购买域名、将博客程序部署在虚拟服务器上，搭建完成后维护的工作也并不轻松，对于我这种比较懒的人来说简直不能忍受。工作过程中，接触Github有了一段时间，在浏览的时候发现Github上能托管自己的博客，稍微了解了一下，发现对于码农来说，让博客run起来比以前容易多了。于是，在工作之余，抽出空闲时间，搭建了自己的博客。</p>
+</p><p>[TOC]</p>
+<p>一直以来都想搭建一个属于自己的博客，在上面放一些自己东西，搭建博客虽说不是很难，但还是繁琐，需要自己去购买虚拟服务器、购买域名、将博客程序部署在虚拟服务器上，搭建完成后维护的工作也并不轻松，对于我这种比较懒的人来说简直不能忍受。工作过程中，接触Github有了一段时间，在浏览的时候发现Github上能托管自己的博客，稍微了解了一下，发现对于码农来说，让博客run起来比以前容易多了。于是，在工作之余，抽出空闲时间，搭建了自己的博客。</p>
 <hr>
 <h2 id="搭建过程"><a href="#搭建过程" class="headerlink" title="搭建过程"></a>搭建过程</h2><h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>搭建博客过程中必须要用到的有 <code>git</code>，和<code>Github账号</code>，git可以直接去<a href="http://git-scm.com/download/" target="_blank" rel="external">git官网</a>下载，Github账号需要在<a href="https://github.com" target="_blank" rel="external">Github</a>上面注册。Github的博客系统使用的是<code>jekyll</code>的引擎，为了方便本地调试，最好在本地安装一个<a href="http://jekyll.bootcss.com/" target="_blank" rel="external">jekyll</a>。安装jekyll并不是必须的，如果嫌麻烦可以不安装。</p>
 <h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><p>核心流程分为注册Github账号，在Github上建立博客仓库，撰写博文，将文章推送到Github等几个步骤，整个流程可以参考<a href="https://pages.github.com/" target="_blank" rel="external">Pages官网</a>。</p>
