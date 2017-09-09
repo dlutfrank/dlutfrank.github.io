@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android,MVP,设计模式," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="MVP模式是从MVC模式演化过来的，MVC模式在业界内有广泛的应用，这里简单介绍下MVC模式。  M (Model) 代表数据访问层 V (View) 代表用户界面 C (Controller) 代表控制逻辑">
+<meta name="keywords" content="Android,MVP,设计模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MVP模式在Android中的应用">
+<meta property="og:url" content="http://shenwenxing.coding.me/2016/11/10/mvp-android/index.html">
+<meta property="og:site_name" content="shenwenxing&#39;s notes">
+<meta property="og:description" content="MVP模式是从MVC模式演化过来的，MVC模式在业界内有广泛的应用，这里简单介绍下MVC模式。  M (Model) 代表数据访问层 V (View) 代表用户界面 C (Controller) 代表控制逻辑">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.jcodecraeer.com/uploads/20150313/1426239008578777.png">
+<meta property="og:image" content="http://7xntab.com1.z0.glb.clouddn.com/image/program/nucleus.png">
+<meta property="og:updated_time" content="2017-09-09T11:41:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MVP模式在Android中的应用">
+<meta name="twitter:description" content="MVP模式是从MVC模式演化过来的，MVC模式在业界内有广泛的应用，这里简单介绍下MVC模式。  M (Model) 代表数据访问层 V (View) 代表用户界面 C (Controller) 代表控制逻辑">
+<meta name="twitter:image" content="http://www.jcodecraeer.com/uploads/20150313/1426239008578777.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://shenwenxing.coding.me/2016/11/10/mvp-android/"/>
+
+
+
+
+
+  <title>MVP模式在Android中的应用 | shenwenxing's notes</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f80cfaeea486c9388abbcf4a1c2ce6a7";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">shenwenxing's notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://shenwenxing.coding.me/2016/11/10/mvp-android/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shenwenxing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="shenwenxing's notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MVP模式在Android中的应用</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-10T20:59:44+08:00">
+                2016-11-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>MVP模式是从MVC模式演化过来的，MVC模式在业界内有广泛的应用，这里简单介绍下MVC模式。</p>
+<ul>
+<li>M (Model) 代表数据访问层</li>
+<li>V (View) 代表用户界面</li>
+<li>C (Controller) 代表控制逻辑</li>
+</ul>
+<a id="more"></a>
+<p>在MVC中，Controller接受View来的指令，操作Model作出改变，Model改变后通知View数据改变，View层读取Model数据刷新UI视觉。<br>对于Android程序而言，Activity可以认为是Controller层，Xml文件配置的界面为View层，由于Andorid中View层能够做的工作实在有限，大量的工作放在了Activity层，这样就使得Activity非常的臃肿，改动起来很麻烦，所以MVC模式在Android中应用起来显得的力不从心，MVP应运而生。</p>
+<h3 id="MVP模式"><a href="#MVP模式" class="headerlink" title="MVP模式"></a>MVP模式</h3><p>MVP模式中P(Presenter)负责控制View和Model之间的交互，是M和V的桥梁。下图是MVC模式和MVP模式的对比，从图中可以看出，MVP模式中，Model和View必须通过Presenter进行交互，不能直接交互。Presenter和View的交互也不是通过直接引用来操作的，而是通过定义而好的接口进行交互，理想情况下，View层视觉改变不会引起Presenter层改变，达到重用的效果。</p>
+<p><img src="http://www.jcodecraeer.com/uploads/20150313/1426239008578777.png" alt="mvpvsmvc"></p>
+<p>MVP模式应用到Android系统中，M层的含义依旧不变，V层变为Activity和Fragment，负责和用户交互，P层为抽象层，负责操作M层，并根据M层的结果来操作V层。</p>
+<h3 id="MVP结构"><a href="#MVP结构" class="headerlink" title="MVP结构"></a>MVP结构</h3><p>参考Google的例子<a href="https://github.com/googlesamples/android-architecture" target="_blank" rel="external">android-architecture</a>，最基本的MVP的结构如下。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">public interface BaseView&lt;T&gt; &#123;</div><div class="line">    void setPresenter(T presenter);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public interface BasePresenter &#123;</div><div class="line">    void start();</div><div class="line">&#125;</div><div class="line"></div><div class="line">public interface LoginContract &#123;</div><div class="line">    interface View extends BaseView&lt;Presenter&gt; &#123;</div><div class="line">        void showMainView();</div><div class="line">        void showLoginFailView(int code);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    interface Presenter extends BasePresenter&#123;</div><div class="line">        void login(String user,String pass);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    interface Model &#123;</div><div class="line">        void doLogin(String user,String pass,Callback callback);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public LoginActivity extends Activity implement LoginContract.View&#123;</div><div class="line">    private Presenter presenter;</div><div class="line">    void setPresenter(Presenter p) &#123;</div><div class="line">        this.presenter = p;</div><div class="line">    &#125;</div><div class="line">    btnLogin.setOnClickListener((v) -&gt; presenter.login(user,pass));</div><div class="line">    public void showMainView() &#123;</div><div class="line">       Intent intent = new Intent(this,MainActivity.class);</div><div class="line">       startActivity(intent);</div><div class="line">    &#125;</div><div class="line">    public void showLoginFailView(int code) &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public LoginPresenter implement LoginContract.Presenter &#123;</div><div class="line">    LoginContract.View view;</div><div class="line">    LoginContract.Model model;</div><div class="line">    void login(String user,String pass) &#123;</div><div class="line">        //处理登录逻辑</div><div class="line">        model.doLogin(user,pass,new Callback() &#123;</div><div class="line">            void onSuccess() &#123;</div><div class="line">                view.showMainView();</div><div class="line">            &#125;</div><div class="line">            void onError(int code,String msg) &#123;</div><div class="line">                view.showLoginFailView(code);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>为了统一整个程序的编码风格，一般会定义BaseView和BasePresenter，实际的View和Presenter继承BaseView和BasePresenter，在BaseView和BasePresenter中可以定义一系列公共的操作函数。写实际业务流程的时候可以定义一个Contract，Contract中定义了View和Presenter交互的接口以及Presenter和Model的交互接口。这样可以让程序结构看起来更清晰，同时也统一了Presenter和View的名字。</p>
+<p>在上面的Demo中，LoginActivity接收来自用户的操作，用户点击登录，则会调用LoginPresenter进行处理，LoginActivity不用关心怎么去处理，只负责发送指令和显示。LoginPresenter登录前可以做参数校验等，如果没有问题则调用LoginModel去进行登录，根据LoginModel返回的结果去操作LoginView，整个登录流程完成。</p>
+<h3 id="nucleus库"><a href="#nucleus库" class="headerlink" title="nucleus库"></a>nucleus库</h3><p>根据上面的Demo可以写出符合MVP模式的代码,但是每次都自己手动生成Presenter，然后将View的设置进Presenter会显得相当麻烦，更重要的是Presenter持有Acitivity的引用，一旦Presenter中涉及到异步回调操作View，就会有Activity泄露的风险，需要手动管理Presenter的生命周期。如果每次都得自己手动管理Presenter，会显得更繁琐。<a href="https://github.com/konmik/nucleus" target="_blank" rel="external">nucleus库</a>很好的解决了MVP模式中的这些问题，下图为nucleus库的类图。</p>
+<p><img src="http://7xntab.com1.z0.glb.clouddn.com/image/program/nucleus.png" alt="nucleus"></p>
+<p>Presenter中定义了一系列声明周期相关的接口，映射Activity的声明周期。NucleusActiviy作为View层并没有直接的创建和管理Presenter，而是通过代理类PresenterLifecycleDelegate去创建和管理其生命周期。NucleusActivity将默认的PrsenterFactory传递给PresenterLifecycleDelegate，在需要创建Presenter的时候，通过工厂方法创建Presenter。Presenter通过单例PresenterStorage来进行存储，独立于Activity之外，达到复用的目的，在Activity onPause的时候，Presenter会移除自己内部的View引用，防止出现内存泄露，在Activity onDestroy的时候，Presenter会将自己从PresenterStorage中移除。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">//注释接口</div><div class="line">@Inherited</div><div class="line">@Retention(RetentionPolicy.RUNTIME)</div><div class="line">public @interface RequiresPresenter &#123;</div><div class="line">    Class&lt;? extends Presenter&gt; value();</div><div class="line">&#125;</div><div class="line"></div><div class="line">//根据注释创建构造Prsenter的工厂</div><div class="line">@Nullable</div><div class="line">public static &lt;P extends Presenter&gt; ReflectionPresenterFactory&lt;P&gt; fromViewClass(Class&lt;?&gt; viewClass) &#123;</div><div class="line">    RequiresPresenter annotation = viewClass.getAnnotation(RequiresPresenter.class);</div><div class="line">    //noinspection unchecked</div><div class="line">    Class&lt;P&gt; presenterClass = annotation == null ? null : (Class&lt;P&gt;)annotation.value();</div><div class="line">    return presenterClass == null ? null : new ReflectionPresenterFactory&lt;&gt;(presenterClass);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public ReflectionPresenterFactory(Class&lt;P&gt; presenterClass) &#123;</div><div class="line">        this.presenterClass = presenterClass;</div><div class="line">&#125;</div><div class="line">//通过反射创建Presenter</div><div class="line">@Override</div><div class="line">public P createPresenter() &#123;</div><div class="line">    try &#123;</div><div class="line">        return presenterClass.newInstance();</div><div class="line">    &#125;</div><div class="line">    catch (Exception e) &#123;</div><div class="line">        throw new RuntimeException(e);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="基于nucleus的MVP模式"><a href="#基于nucleus的MVP模式" class="headerlink" title="基于nucleus的MVP模式"></a>基于nucleus的MVP模式</h3><ul>
+<li><p>定义Contract<br>这里Contract的意义和第一个LoginContract的意义是一样，对各层之间的交互使用接口进行隔离。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public interface IDemoContract &#123;</div><div class="line">    interface IPresenter &#123;</div><div class="line">        void perforAction();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    interface IView &#123;</div><div class="line">        void showSuccessMessage();</div><div class="line"></div><div class="line">        void showFailedMessage();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>实现Presenter<br>为了借助nucleus库帮助我们自动创建和管理Presenter，需要继承库中的Presenter，为了和View层交互，要实现Contract中的Presenter，同时为了隔离Activity中的函数，泛型参数传入IView。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public class DemoPresenter extends Presenter&lt;IDemoContract.IView&gt; implements IDemoContract.IPresenter &#123;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void perforAction() &#123;</div><div class="line">        //处理业务逻辑</div><div class="line">        //...</div><div class="line">        //view层展示</div><div class="line">        IDemoContract.IView view = getView();</div><div class="line">        if (view != null) &#123;</div><div class="line">            view.showSuccessMessage();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>实现View<br>自动创建和管理Presenter同时也需要Activity继承自NucleusActivity，并在Activity类上添加注释@RequiresPresenter(Presenter.class)。并在Activity中实现View的接口。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">@RequiresPresenter(DemoPresenter.class)</div><div class="line">public class DemoActivity extends NSIBaseActivity&lt;DemoPresenter&gt; implements IDemoContract.IView &#123;</div><div class="line">    private Button btnTestMvp;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(@Nullable Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_mvp_demo);</div><div class="line">        bindViews(null);</div><div class="line">        setListener();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void bindViews(View view) &#123;</div><div class="line">        btnTestMvp = (Button) findViewById(R.id.btn_test_mvp);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void setListener() &#123;</div><div class="line">        btnTestMvp.setOnClickListener(new View.OnClickListener() &#123;</div><div class="line">            @Override</div><div class="line">            public void onClick(View v) &#123;</div><div class="line">                DemoPresenter presenter = getPresenter();</div><div class="line">                if (presenter != null) &#123;</div><div class="line">                    presenter.perforAction();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void initData() &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void showSuccessMessage() &#123;</div><div class="line">        showShortToast(&quot;Action success&quot;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void showFailedMessage() &#123;</div><div class="line">        showShortToast(&quot;Action Failed&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="自动化测试"><a href="#自动化测试" class="headerlink" title="自动化测试"></a>自动化测试</h3><p>由于Presenter通过View接口对Activity进行了隔离，Presenter中的代码是Android无关的，自动化测试起来会很方便。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">public class MvpDemoPresenterTest &#123;</div><div class="line">    @Test</div><div class="line">    public void test_perform_action() &#123;</div><div class="line">        IDemoContract.IView view = Mockito.mock(IDemoContract.IView.class);</div><div class="line">        DemoPresenter presenter = new DemoPresenter();</div><div class="line">        presenter.takeView(view);</div><div class="line">        presenter.perforAction();</div><div class="line">        Mockito.verify(view).showSuccessMessage();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>接口隔离，容易复用</li>
+<li>便于自动化测试</li>
+<li>耦合度低</li>
+<li>交互清晰<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><a href="https://github.com/googlesamples/android-architecture" target="_blank" rel="external">Android Architecture Blueprints</a><br><a href="https://github.com/konmik/konmik.github.io/wiki/Introduction-to-Model-View-Presenter-on-Android" target="_blank" rel="external">Introduction to Model View Presenter on Android</a><br><a href="https://github.com/android10/Android-CleanArchitecture" target="_blank" rel="external">Android Clean Architecture</a><br><a href="http://frodoking.github.io/2015/02/01/android-mvc-mvp-analysis/" target="_blank" rel="external">MVC和MVP在app中的对比分析以及实际应用</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/MVP/" rel="tag"># MVP</a>
+          
+            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/04/android-unit-test/" rel="next" title="Android单元测试">
+                <i class="fa fa-chevron-left"></i> Android单元测试
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/18/complie-android-project/" rel="prev" title="Android源码编译踩坑记">
+                Android源码编译踩坑记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="uyan_frame"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <p class="site-author-name" itemprop="name">shenwenxing</p>
+            <p class="site-description motion-element" itemprop="description">80后，互联网从业者</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/dlutfrank" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="mailto:dlut_frank@163.com" target="_blank" title="E-Mail">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#MVP模式"><span class="nav-number">1.</span> <span class="nav-text">MVP模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MVP结构"><span class="nav-number">2.</span> <span class="nav-text">MVP结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nucleus库"><span class="nav-number">3.</span> <span class="nav-text">nucleus库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于nucleus的MVP模式"><span class="nav-number">4.</span> <span class="nav-text">基于nucleus的MVP模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自动化测试"><span class="nav-number">5.</span> <span class="nav-text">自动化测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优点"><span class="nav-number">6.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">7.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">shenwenxing</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2143423"></script>
+      <!-- UY END -->
+    
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android,单元测试," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="单元测试框架分为Java平台下的测试框架和Android平台下的测试框架，Java平台下常用的框架有Junit，Mockito，Powermockito等，Android平台下的测试框架有Robolectric和Espresso等。Junit运行在jvm上，一般自动化测试都会使用其他测试框架搭配Junit测试框架使用，Mockito框架可以解决单元测试中对象依赖的问题。Powermockito在功">
+<meta name="keywords" content="Android,单元测试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android单元测试">
+<meta property="og:url" content="http://shenwenxing.coding.me/2016/11/04/android-unit-test/index.html">
+<meta property="og:site_name" content="shenwenxing&#39;s notes">
+<meta property="og:description" content="单元测试框架分为Java平台下的测试框架和Android平台下的测试框架，Java平台下常用的框架有Junit，Mockito，Powermockito等，Android平台下的测试框架有Robolectric和Espresso等。Junit运行在jvm上，一般自动化测试都会使用其他测试框架搭配Junit测试框架使用，Mockito框架可以解决单元测试中对象依赖的问题。Powermockito在功">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-09-09T11:45:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android单元测试">
+<meta name="twitter:description" content="单元测试框架分为Java平台下的测试框架和Android平台下的测试框架，Java平台下常用的框架有Junit，Mockito，Powermockito等，Android平台下的测试框架有Robolectric和Espresso等。Junit运行在jvm上，一般自动化测试都会使用其他测试框架搭配Junit测试框架使用，Mockito框架可以解决单元测试中对象依赖的问题。Powermockito在功">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://shenwenxing.coding.me/2016/11/04/android-unit-test/"/>
+
+
+
+
+
+  <title>Android单元测试 | shenwenxing's notes</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f80cfaeea486c9388abbcf4a1c2ce6a7";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">shenwenxing's notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://shenwenxing.coding.me/2016/11/04/android-unit-test/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shenwenxing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="shenwenxing's notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android单元测试</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-04T12:07:37+08:00">
+                2016-11-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>单元测试框架分为Java平台下的测试框架和Android平台下的测试框架，Java平台下常用的框架有Junit，Mockito，Powermockito等，Android平台下的测试框架有Robolectric和Espresso等。<br>Junit运行在jvm上，一般自动化测试都会使用其他测试框架搭配Junit测试框架使用，Mockito框架可以解决单元测试中对象依赖的问题。Powermockito在功能上扩展了Mockito功能，Powermockito能够mock静态、final、私有等方法 ，这些在Mockito中不能完成的。Espresso是Google官方出的Android测试框架，语法简单，缺点是只能在真机上进行测试。Robolectric不需要借助Android手机，就能完成对Android代码的自动化测试。</p>
+<a id="more"></a>
+<h3 id="Junit测试框架"><a href="#Junit测试框架" class="headerlink" title="Junit测试框架"></a>Junit测试框架</h3><p>Junit测试的语法非常简单，如果使用Gradle进行打包，要集成该框架也很简单。只需要在相应模块的依赖中加入库的配置即可。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">dependencies &#123;</div><div class="line">    testCompile &apos;junit:junit:4.12&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Junit测试中用得最多的当属Assert语法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line">public interface IFilter &#123;</div><div class="line">    boolean isValidate(String content);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class PhoneFilter implements IFilter &#123;</div><div class="line">    private static final String PHONE_REGEX = &quot;\\d&#123;11&#125;&quot;;</div><div class="line">    private Pattern mPattern;</div><div class="line">    private Matcher mMatcher;</div><div class="line"></div><div class="line">    public PhoneFilter() &#123;</div><div class="line">        mPattern = Pattern.compile(mRegex);</div><div class="line">        mMatcher = mPattern.matcher(&quot; &quot;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public boolean isValidate(String content) &#123;</div><div class="line">        if (content == null || content.isEmpty()) &#123;</div><div class="line">    	    return false;</div><div class="line">	&#125;</div><div class="line">	mMatcher.reset(content);</div><div class="line">	return mMatcher.matches();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class PhoneFilterTest &#123;</div><div class="line">    private IFilter filter;</div><div class="line">    private IFilter nullFilter = null;</div><div class="line"></div><div class="line">    @BeforeClass</div><div class="line">    public void beforeClass() &#123;</div><div class="line">        filter = new PhoneFilter();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Test</div><div class="line">    public void test_isValidate() &#123;</div><div class="line">        Assert.assertTrue(filter.isValidate(&quot;13991756543&quot;));</div><div class="line">        Assert.assertTrue(filter.isValidate(&quot;00000000000&quot;));</div><div class="line">        Assert.assertFalse(filter.isValidate(&quot;10086&quot;));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Test</div><div class="line">    public void test_Assert() &#123;</div><div class="line">        String strExpect = &quot;expect&quot;;</div><div class="line">        String strActual = &quot;expect&quot;;</div><div class="line">        Assert.assertEquals(strExpect,strActual);</div><div class="line">        Assert.assertArrayEquals(strExpect.getBytes(),strActual.getBytes());</div><div class="line">        Assert.assertNotNull(strActual);</div><div class="line">        Assert.assertNull(nullFilter);</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>上面是<code>PhoneFilter</code>及其测试类<code>PhoneFilterTest</code>。写单元测试的时候，测试的类名一般命名为原类名后加<code>Test</code>前缀，测试函数为原函数加<code>_test</code>前缀，测试函数上面必须加上标记<code>@Test</code>，并且必须为<code>public</code>的函数。然后根据实际情况使用<code>Assert</code>语句，常用的Assert语句为<code>assertEquals</code>，<code>assertTrue</code>，<code>assertFalse</code>，<code>assertNull</code>，<code>assertNotNull</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">@BeforeClass</div><div class="line">public void beforeClass() &#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">@Before</div><div class="line">public void before() &#123;</div><div class="line">    filter = new PhoneFilter();</div><div class="line">&#125;</div><div class="line"></div><div class="line">@After</div><div class="line">public void after() &#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">@AfterClass</div><div class="line">public void afterClass() &#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Junit框架中提供了能做初始化和清理的函数，<code>@Before</code>和<code>@After</code>在每个测试函数调用之前和之后都会执行，<code>@BeforeClass</code>和<code>@AfterClass</code>对于每个测试类只执行一次，函数名称可以随便改变。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@Test(expected = IndexOutOfBoundsException.class)</div><div class="line">public void empty() &#123;</div><div class="line">    new ArrayList&lt;Object&gt;().get(0);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Junit框架对<code>Exception</code>的测试也提供了支持。</p>
+<h3 id="Mockito框架"><a href="#Mockito框架" class="headerlink" title="Mockito框架"></a>Mockito框架</h3><blockquote>
+<p>Mockito is a mocking framework that tastes really good. It lets you write beautiful tests with a clean &amp; simple API.</p>
+</blockquote>
+<p>引用<a href="http://site.mockito.org/" target="_blank" rel="external">Mockito官网</a>的说法，Mockito是一个mocking的框架，可以做依赖隔离。项目中引入Mockito测试也很简单，只需要在加入下面的依赖即可。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">testCompile &apos;org.mockito:mockito-core:2.2.9&apos;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">public interface IFilter &#123;</div><div class="line">    boolean isValidate(String content);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class PhonePresenter &#123;</div><div class="line">    private IFilter phoneFilter;</div><div class="line">    pulbic void setFilter(IFilter filter) &#123;</div><div class="line">        phoneFilter = filter;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public boolean callPhone(String phoneNum) &#123;</div><div class="line">        if (phoneFilter.isValidate(phoneNum)) &#123;</div><div class="line">            //TODO:call phone logic</div><div class="line">            return true;</div><div class="line">        &#125; else &#123;</div><div class="line">            return false;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class PhonePresenterTest &#123;</div><div class="line">    @Test</div><div class="line">    public void test_callPhone() &#123;</div><div class="line">        PhonePresenter presenter = new PhonePresenter();</div><div class="line">        IFilter filter = Mockito.mock(IFilter.class);</div><div class="line">        Mockito.when(filter.isValidate(&quot;12345&quot;)).thenReturn(false);</div><div class="line">        Mockito.when(filter.isValidate(&quot;10086&quot;)).thenReturn(true);</div><div class="line">        presenter.setFilter(filter);</div><div class="line"></div><div class="line">        Assert.assertTrue(presenter.callPhone(&quot;10086&quot;));</div><div class="line">        Assert.assertFalse(presenter.callPhone(&quot;12345&quot;));</div><div class="line">        Mockito.verify(filter,Mockito.times(1)).isValidate(&quot;10086&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们要对<code>callPhone</code>函数进行测试，函数中引用了<code>phoneFilter</code>,在该函数测试的时候，我们不希望<code>phoneFilter</code>内部逻辑的失败导致当前函数测试的失败，更糟糕的是，<code>phoneFilter</code>可能引用了Android库，我们没有办法去正常调用，这时候就可以使用<code>mock</code>来做依赖隔离。隔离后可以对函数调用结果做判断，也可以对<code>isValidate</code>函数是否执行了进行验证。  从这个例子也可以看出mock的两大功能。</p>
+<ul>
+<li>验证某个方法是否被调用，以及调用了多少次，参数是什么。</li>
+<li>指定某个方法在各种情况下的返回值。</li>
+</ul>
+<h3 id="Robolectric框架"><a href="#Robolectric框架" class="headerlink" title="Robolectric框架"></a>Robolectric框架</h3><p>前面介绍Robolectric的时候提到过，Robolectric能够在jvm环境下测试Android代码，是怎么做到的呢。Robolectric通过实现一套jvm能运行的Android代码，然后在单元测试运行的时候去截取android相关的代码调用，然后转到他们的他们实现的代码去执行这个调用的过程。<br>加入依赖到Gradle脚本中就可以使用Robolectric了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">testCompile &apos;org.robolectric:robolectric:3.1.4&apos;</div></pre></td></tr></table></figure></p>
+<p>值得注意的是，在API23下面测试Activity相关的代码会报类似以下错误:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">java.lang.NoClassDefFoundError: javax/microedition/khronos/opengles/GL</div></pre></td></tr></table></figure></p>
+<p>解决方案是在测试的类上指定API21。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">@RunWith(RobolectricTestRunner.class)</div><div class="line">@Config(constants = BuildConfig.class, sdk = 21)</div><div class="line">public class NSITestActivityTest &#123;</div><div class="line">    private NSITestActivity testActivity;</div><div class="line"></div><div class="line">    @Before</div><div class="line">    public void setup() &#123;</div><div class="line">        ShadowLog.stream = System.out;</div><div class="line">        testActivity = Robolectric.setupActivity(NSITestActivity.class);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Test</div><div class="line">    public void test_start_activity() &#123;</div><div class="line">        Button btnMvp = (Button) testActivity.findViewById(R.id.btn_test_mvp);</div><div class="line">        Assert.assertNotNull(btnMvp);</div><div class="line">        btnMvp.performClick();</div><div class="line">        Intent expect = new Intent(testActivity, DemoActivity.class);</div><div class="line">        Intent actual = Shadows.shadowOf(testActivity).getNextStartedActivity();</div><div class="line">//        Intent actual = ShadowApplication.getInstance().getNextStartedActivity();</div><div class="line">//        Assert.assertEquals(expect, actual);</div><div class="line">        Assert.assertTrue(actual.filterEquals(expect));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>测试Android相关代码的时候，有几点需要注意。</p>
+<ul>
+<li>需要在测试类前面指定Runner为<code>RobolectricTestRunner.class</code>，早期的版本指定的是<code>RobolectricGradleTestRunner.class</code>，3.0以后一定要用前者。</li>
+<li>需要指定<code>constants = BuildConfig.class</code></li>
+<li>需要指定<code>sdk = 21</code>，原因如前面所述。</li>
+</ul>
+<p>在启动测试Activity的时候，判断Intent是否相等的时候，不能简单的使用<code>Assert.assertEquals(expect,actual)</code>，而应该使用<code>Assert.assertTrue(actual.filterEquals(expect))</code>。在3.0之前使用前者是能作出正确判断的，3.0之后使用前者会报错，错误信息如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">java.lang.AssertionError: expected: android.content.Intent&lt;Intent &#123; cmp=com.nsip.android/.business.mvpDemo.DemoActivity &#125;&gt; but was: android.content.Intent&lt;Intent &#123; cmp=com.nsip.android/.business.mvpDemo.DemoActivity &#125;&gt;</div><div class="line">Expected :android.content.Intent&lt;Intent &#123; cmp=com.nsip.android/.business.mvpDemo.DemoActivity &#125;&gt;</div><div class="line">Actual   :android.content.Intent&lt;Intent &#123; cmp=com.nsip.android/.business.mvpDemo.DemoActivity &#125;&gt;</div></pre></td></tr></table></figure></p>
+<p>对于其他Android相关的测试类似于Activity的测试。<br>Activity代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div></pre></td><td class="code"><pre><div class="line">public class UTSampleActivity extends BaseActivity &#123;</div><div class="line">    @BindView(R.id.tv_life_circle)</div><div class="line">    TextView tvLifeCircle;</div><div class="line">    @BindView(R.id.tv_about)</div><div class="line">    TextView btnAbout;</div><div class="line">    @BindView(R.id.tv_show_toast)</div><div class="line">    TextView btnShowToast;</div><div class="line">    @BindView(R.id.tv_show_dialog)</div><div class="line">    TextView btnShowDialog;</div><div class="line">    @BindView(R.id.tv_delay_task)</div><div class="line">    TextView btnDelayTask;</div><div class="line">    @BindView(R.id.tv_inverse)</div><div class="line">    TextView btnInverse;</div><div class="line">    @BindView(R.id.cb_state)</div><div class="line">    CheckBox cbState;</div><div class="line"></div><div class="line">    public boolean isFinished = false;</div><div class="line"></div><div class="line">    public static final String TAG = UTSampleActivity.class.getSimpleName();</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.unit_test_sample_layout);</div><div class="line">        ButterKnife.bind(this);</div><div class="line">        tvLifeCircle.setText(&quot;onCreate&quot;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onResume() &#123;</div><div class="line">        super.onResume();</div><div class="line">        tvLifeCircle.setText(&quot;onResume&quot;);</div><div class="line">        Log.d(TAG,&quot;sample activity resume&quot;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onPause() &#123;</div><div class="line">        super.onPause();</div><div class="line">        tvLifeCircle.setText(&quot;onPause&quot;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onDestroy() &#123;</div><div class="line">        super.onDestroy();</div><div class="line">        tvLifeCircle.setText(&quot;onDestroy&quot;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @OnClick(R.id.tv_about)</div><div class="line">    public void onClick() &#123;</div><div class="line">        Intent intent = new Intent(UTSampleActivity.this, AboutActivity.class);</div><div class="line">        startActivity(intent);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @OnClick(&#123;R.id.tv_show_toast, R.id.tv_show_dialog, R.id.tv_delay_task,</div><div class="line">            R.id.tv_inverse, R.id.cb_state&#125;)</div><div class="line">    public void onClick(View view) &#123;</div><div class="line">        switch (view.getId()) &#123;</div><div class="line">            case R.id.tv_show_toast:</div><div class="line">                Toast.makeText(view.getContext(), &quot;toast info&quot;, Toast.LENGTH_SHORT).show();</div><div class="line">                break;</div><div class="line">            case R.id.tv_show_dialog:</div><div class="line">                AlertDialog dialog = new AlertDialog.Builder(view.getContext())</div><div class="line">                        .setMessage(&quot;Dialog Message&quot;)</div><div class="line">                        .setTitle(&quot;Dialog&quot;)</div><div class="line">                        .create();</div><div class="line">                dialog.show();</div><div class="line">                break;</div><div class="line">            case R.id.tv_delay_task:</div><div class="line">                isFinished = false;</div><div class="line">                mHander.postDelayed(() -&gt; isFinished = true, 2000);</div><div class="line">                break;</div><div class="line">            case R.id.tv_inverse:</div><div class="line">                cbState.setChecked(!cbState.isChecked());</div><div class="line">                break;</div><div class="line">            case R.id.cb_state:</div><div class="line">                cbState.setChecked(!cbState.isChecked());</div><div class="line">                break;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Activity对应的xml文件如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;match_parent&quot;</div><div class="line">    android:orientation=&quot;vertical&quot;</div><div class="line">    android:paddingBottom=&quot;@dimen/activity_vertical_margin&quot;</div><div class="line">    android:paddingLeft=&quot;@dimen/activity_horizontal_margin&quot;</div><div class="line">    android:paddingRight=&quot;@dimen/activity_horizontal_margin&quot;</div><div class="line">    android:paddingTop=&quot;@dimen/activity_vertical_margin&quot;&gt;</div><div class="line"></div><div class="line">    &lt;TextView</div><div class="line">        android:id=&quot;@+id/tv_life_circle&quot;</div><div class="line">        style=&quot;@style/LDTDCommonButton&quot;</div><div class="line">        android:text=&quot;life circle&quot; /&gt;</div><div class="line"></div><div class="line">    &lt;TextView</div><div class="line">        android:id=&quot;@+id/tv_about&quot;</div><div class="line">        style=&quot;@style/LDTDCommonButton&quot;</div><div class="line">        android:text=&quot;About Page&quot; /&gt;</div><div class="line"></div><div class="line">    &lt;TextView</div><div class="line">        android:id=&quot;@+id/tv_show_toast&quot;</div><div class="line">        style=&quot;@style/LDTDCommonButton&quot;</div><div class="line">        android:text=&quot;Show Toast&quot; /&gt;</div><div class="line"></div><div class="line">    &lt;TextView</div><div class="line">        android:id=&quot;@+id/tv_show_dialog&quot;</div><div class="line">        style=&quot;@style/LDTDCommonButton&quot;</div><div class="line">        android:text=&quot;Show Dialog&quot; /&gt;</div><div class="line"></div><div class="line">    &lt;TextView</div><div class="line">        android:id=&quot;@+id/tv_delay_task&quot;</div><div class="line">        style=&quot;@style/LDTDCommonButton&quot;</div><div class="line">        android:text=&quot;Delay Task&quot; /&gt;</div><div class="line"></div><div class="line">    &lt;TextView</div><div class="line">        android:id=&quot;@+id/tv_inverse&quot;</div><div class="line">        style=&quot;@style/LDTDCommonButton&quot;</div><div class="line">        android:text=&quot;Inverse&quot; /&gt;</div><div class="line"></div><div class="line">    &lt;CheckBox</div><div class="line">        android:id=&quot;@+id/cb_state&quot;</div><div class="line">        android:layout_width=&quot;wrap_content&quot;</div><div class="line">        android:layout_height=&quot;wrap_content&quot;</div><div class="line">        android:checked=&quot;false&quot;</div><div class="line">        android:text=&quot;state&quot; /&gt;</div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure></p>
+<p>下面是对Android相关组件的测试，在测试的过程中可以设置日志的输出。这样代码中的日志和测试中的日志都会输出到同一个地方，非常方便。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@Before</div><div class="line">public void setup() throws URISyntaxException&#123;</div><div class="line">    //输出日志</div><div class="line">    ShadowLog.stream = System.out;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>测试整个Activity的生命周期需要用到ActivityController。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">@Test</div><div class="line">public void testLifeCirecle() &#123;</div><div class="line">    ActivityController&lt;UTSampleActivity&gt; controller = Robolectric.buildActivity(UTSampleActivity.class).create().start();</div><div class="line">    Activity sampleActivity = controller.get();</div><div class="line">    TextView tvlife = (TextView) sampleActivity.findViewById(R.id.tv_life_circle);</div><div class="line">    Assert.assertEquals(&quot;onCreate&quot;, tvlife.getText());</div><div class="line">    controller.resume();</div><div class="line">    Assert.assertEquals(&quot;onResume&quot;, tvlife.getText());</div><div class="line">    Log.d(&quot;lifeCircle&quot;,&quot;onResume&quot;);</div><div class="line">    controller.pause();</div><div class="line">    Assert.assertEquals(&quot;onPause&quot;, tvlife.getText());</div><div class="line">    controller.destroy();</div><div class="line">    Assert.assertEquals(&quot;onDestroy&quot;, tvlife.getText());</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>测试Toast是否弹出,这里在生成Activity的时候，并没有使用ActivityController，而是直接使用的setupActivity。两者之间的区别在于，通过Robolectric.setupActivity(UTSampleActivity.class)生成的instance在返回的时候就已经完成了onCreate、onStart、onResume这几个生命周期的回调了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">@Test</div><div class="line">public void testToast() &#123;</div><div class="line">    mSampleActivity = Robolectric.setupActivity(UTSampleActivity.class);</div><div class="line">    TextView btnToast = (TextView) mSampleActivity.findViewById(R.id.tv_show_toast);</div><div class="line">    btnToast.performClick();</div><div class="line">    Assert.assertEquals(ShadowToast.getTextOfLatestToast(), &quot;toast info&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>使用<code>ShadowLooper.runUiThreadTasksIncludingDelayedTasks()</code>可以让延时的任务立即执行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@Test</div><div class="line">public void testDelayTask() &#123;</div><div class="line">    TextView btnTask = (TextView) mSampleActivity.findViewById(R.id.tv_delay_task);</div><div class="line">    btnTask.performClick();</div><div class="line">    Assert.assertFalse(mSampleActivity.isFinished);</div><div class="line">    ShadowLooper.runUiThreadTasksIncludingDelayedTasks();</div><div class="line">    Assert.assertTrue(mSampleActivity.isFinished);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Dialog测试</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">@Test</div><div class="line">public void testDialog() &#123;</div><div class="line">    TextView btnDialog = (TextView) mSampleActivity.findViewById(R.id.tv_show_dialog);</div><div class="line">    btnDialog.performClick();</div><div class="line">    AlertDialog latestDialog = ShadowAlertDialog.getLatestAlertDialog();</div><div class="line">    Assert.assertNotNull(latestDialog);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>资源测试<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@Test</div><div class="line">public void testResource() &#123;</div><div class="line">    Application application = RuntimeEnvironment.application;</div><div class="line">    String appName = application.getString(R.string.app_name);</div><div class="line">    Assert.assertEquals(appName, &quot;LDTaskDemo&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Service类以及对应的测试类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">public class SampleIntentService extends IntentService &#123;</div><div class="line">    public SampleIntentService(String name) &#123;</div><div class="line">        super(name);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public SampleIntentService() &#123;</div><div class="line">        this(&quot;defaultSampleIntentService&quot;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onHandleIntent(Intent intent) &#123;</div><div class="line">        SharedPreferences.Editor editor = getApplicationContext().getSharedPreferences(&quot;example&quot;, MODE_PRIVATE).edit();</div><div class="line">        String extData = intent.getStringExtra(&quot;EXTRA_DATA&quot;);</div><div class="line">        if (extData != null &amp;&amp; !extData.isEmpty()) &#123;</div><div class="line">            editor.putString(&quot;SAMPLE_DATA&quot;, extData);</div><div class="line">        &#125; else &#123;</div><div class="line">            editor.putString(&quot;SAMPLE_DATA&quot;, &quot;sample intent data&quot;);</div><div class="line">        &#125;</div><div class="line">        editor.apply();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@Test</div><div class="line">    public void testWriteData() &#123;</div><div class="line">        Application application = RuntimeEnvironment.application;</div><div class="line">        RoboSharedPreferences roboSharedPreferences = (RoboSharedPreferences) application</div><div class="line">                .getSharedPreferences(&quot;example&quot;, Context.MODE_PRIVATE);</div><div class="line">        SampleIntentService intentService = new SampleIntentService();</div><div class="line">        Intent intent = new Intent();</div><div class="line">        intent.putExtra(&quot;EXTRA_DATA&quot;, &quot;swx_sample&quot;);</div><div class="line">        intentService.onHandleIntent(intent);</div><div class="line">        Assert.assertEquals(roboSharedPreferences.getString(&quot;SAMPLE_DATA&quot;, &quot;&quot;), &quot;swx_sample&quot;);</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>Checkbox测试<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">@Test</div><div class="line">public void testCheckbox() &#123;</div><div class="line">    TextView btnInverse = (TextView) mSampleActivity.findViewById(R.id.tv_inverse);</div><div class="line">    CheckBox cbState = (CheckBox) mSampleActivity.findViewById(R.id.cb_state);</div><div class="line">    Assert.assertFalse(cbState.isChecked());</div><div class="line">    btnInverse.performClick();</div><div class="line">    Assert.assertTrue(cbState.isChecked());</div><div class="line"></div><div class="line">    btnInverse.performClick();</div><div class="line">    Assert.assertFalse(cbState.isChecked());</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>对于Android中的每一个组件，Robolectric中都有对应的类。Application与ShadowApplication对应，Toast与ShadowToast对应等。Robolectric中也提供了方法自己去实现Shadow类，并提供方法在测试框架中调用自己实现的Shadow类。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public class NSIEntry &#123;</div><div class="line">    private float x = 0.0f;</div><div class="line"></div><div class="line">    public NSIEntry() &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public NSIEntry(float x) &#123;</div><div class="line">        this.x = x;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void setX(float x) &#123;</div><div class="line">        this.x = x;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public float getX() &#123;</div><div class="line">        return x;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>首先实现对应的Shadow类，在类上加注释<code>Implements(xxx.class)</code>，在需要调用的方法前加注释<code>@Implementation</code>。<code>__constructor__</code>为其对应的构造函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">@Implements(NSIEntry.class)</div><div class="line">public class ShadowEntry &#123;</div><div class="line"></div><div class="line">    @Implementation</div><div class="line">    public float getX() &#123;</div><div class="line">        return 0.618f;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Implementation</div><div class="line">    public void __constructor__() &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Shadow类定义出来后，下面要做的就是在测试框架中去调用它。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">@RunWith(RobolectricTestRunner.class)</div><div class="line">@Config(constants = BuildConfig.class, shadows = &#123;ShadowEntry.class&#125;)</div><div class="line">public class CustomShadowTest &#123;</div><div class="line"></div><div class="line">    @Test</div><div class="line">    public void test_entry() &#123;</div><div class="line">        //ShadowEntry将自动代替原始对象，调用Shadow对象的数据和行为</div><div class="line">        NSIEntry entry = new NSIEntry(2.0f);</div><div class="line">        Assert.assertEquals(0.618f, entry.getX(), 0.0001f);</div><div class="line"></div><div class="line">        //获取Entry对象对应的ShadowEntry</div><div class="line">        ShadowEntry shadowEntry = (ShadowEntry) ShadowExtractor.extract(entry);</div><div class="line">        Assert.assertEquals(0.618f, shadowEntry.getX(), 0.0001f);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>该测试是能通过的，构造的时候，传进去的值为2.0f，调用getX()的时候，被替换为Shadow类的函数调用，结果变为0.618。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>写单元测试的时候，一般用JUnit作为主要框架，Mockito在实现依赖隔离，对于Android代码的测试，可以引入Robolectric来进行测试。写单元测试并不难，要写出能被测试的代码比较难。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/单元测试/" rel="tag"># 单元测试</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/10/30/mark-down-study/" rel="next" title="Markdown学习手记">
+                <i class="fa fa-chevron-left"></i> Markdown学习手记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/10/mvp-android/" rel="prev" title="MVP模式在Android中的应用">
+                MVP模式在Android中的应用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="uyan_frame"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <p class="site-author-name" itemprop="name">shenwenxing</p>
+            <p class="site-description motion-element" itemprop="description">80后，互联网从业者</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/dlutfrank" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="mailto:dlut_frank@163.com" target="_blank" title="E-Mail">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Junit测试框架"><span class="nav-number">1.</span> <span class="nav-text">Junit测试框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mockito框架"><span class="nav-number">2.</span> <span class="nav-text">Mockito框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Robolectric框架"><span class="nav-number">3.</span> <span class="nav-text">Robolectric框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">shenwenxing</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2143423"></script>
+      <!-- UY END -->
+    
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
