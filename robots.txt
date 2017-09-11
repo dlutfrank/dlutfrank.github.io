@@ -13,5 +13,5 @@ Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
 
-Sitemap: http://www.zaoanx.com/sitemap.xml
-Sitemap: http://www.zaoanx.com/baidusitemap.xml
+Sitemap: https://shenwenxing.com/sitemap.xml
+Sitemap: https://shenwenxing.com/baidusitemap.xml
