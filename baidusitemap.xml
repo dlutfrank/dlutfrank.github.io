@@ -5,7 +5,7 @@
     
   <url>
     <loc>https://shenwenxing.com/complie-android-project.html</loc>
-    <lastmod>2017-09-11T06:25:49.000Z</lastmod>
+    <lastmod>2017-09-11T07:03:55.000Z</lastmod>
     <data>
         <display>
         <title>Android源码编译踩坑记</title>
@@ -18,7 +18,7 @@
          
            
              
-              <breadCrumb title="技术" url="https://shenwenxing.com/categories/%E6%8A%80%E6%9C%AF/"/>
+              <breadCrumb title="编程" url="https://shenwenxing.com/categories/programming/"/>
           
         </display>
     </data>
@@ -27,7 +27,7 @@
     
   <url>
     <loc>https://shenwenxing.com/android-unit-test.html</loc>
-    <lastmod>2017-09-11T04:02:58.000Z</lastmod>
+    <lastmod>2017-09-11T07:03:54.000Z</lastmod>
     <data>
         <display>
         <title>Android单元测试</title>
@@ -35,22 +35,21 @@
         
         <tag>Android</tag>
          
-        <tag>Unit Test</tag>
+        <tag>单元测试</tag>
          
          
            
              
-              <breadCrumb title="技术" url="https://shenwenxing.com/categories/%E6%8A%80%E6%9C%AF/"/>
+              <breadCrumb title="编程" url="https://shenwenxing.com/categories/programming/"/>
           
         </display>
     </data>
     </url>
 
     
-    
   <url>
     <loc>https://shenwenxing.com/mvp-android.html</loc>
-    <lastmod>2017-09-09T11:41:14.000Z</lastmod>
+    <lastmod>2017-09-11T07:03:53.000Z</lastmod>
     <data>
         <display>
         <title>MVP模式在Android中的应用</title>
@@ -65,12 +64,13 @@
          
            
              
-              <breadCrumb title="技术" url="https://shenwenxing.com/categories/%E6%8A%80%E6%9C%AF/"/>
+              <breadCrumb title="编程" url="https://shenwenxing.com/categories/programming/"/>
           
         </display>
     </data>
     </url>
 
+    
     
     
     
@@ -108,7 +108,7 @@
          
            
              
-              <breadCrumb title="tools" url="https://shenwenxing.com/categories/tools/"/>
+              <breadCrumb title="工具" url="https://shenwenxing.com/categories/tools/"/>
           
         </display>
     </data>
