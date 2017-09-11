@@ -108,7 +108,7 @@
 <meta property="og:description" content="编译源码的时候首先需要搭建环境，可以参照Google官方的文档进行搭建。Google官方文档">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://img.blog.csdn.net/20151001201951821">
-<meta property="og:updated_time" content="2017-09-11T05:08:32.000Z">
+<meta property="og:updated_time" content="2017-09-11T06:25:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android源码编译踩坑记">
 <meta name="twitter:description" content="编译源码的时候首先需要搭建环境，可以参照Google官方的文档进行搭建。Google官方文档">
@@ -453,7 +453,7 @@
       
 
       
-        <p>编译源码的时候首先需要搭建环境，可以参照Google官方的文档进行搭建。<br><a rel="external" href="https://source.android.com/source/initializing.html" target="_blank">Google官方文档</a></p>
+        <p>编译源码的时候首先需要搭建环境，可以参照Google官方的文档进行搭建。<br><a href="https://source.android.com/source/initializing.html" rel="external" target="_blank">Google官方文档</a></p>
 <a id="more"></a>
 <h3 id="拉取代码要点"><a href="#拉取代码要点" class="headerlink" title="拉取代码要点"></a>拉取代码要点</h3><p>AOSP工程非常庞大，越靠后的版本，所需空间越大，如果只是为了学习，没必要拉取最新的master分支，在拉取的时候可以指定分支。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ repo init -u https://android.googlesource.com/platform/manifest -b android-6.0.1_r1 --depth=1</div></pre></td></tr></table></figure></p>
 <p><code>-u</code>指定URL，被墙了可以指定国内镜像，例如清华大学的镜像 <a href="https://aosp.tuna.tsinghua.edu.cn/" target="_blank" rel="external">https://aosp.tuna.tsinghua.edu.cn/</a><br><code>-b</code> 指定拉取的分支，比如<code>android-6.0.1_r1</code>，这里一定要记住分支前面的Build类型，6.0.1_r1的Build就是<code>MMB29K</code>，编译之前会用到。<br><code>--depth</code>指定历史记录，没有指定会拉取所有的历史记录。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">repo sync -c</div></pre></td></tr></table></figure></p>
@@ -622,13 +622,13 @@
           
             
               <span class="links-of-author-item">
-                <a href="https://github.com/dlutfrank" target="_blank" title="GitHub" rel="external nofollow">
+                <a href="https://github.com/dlutfrank" target="_blank" title="GitHub">
                   
                     <i class="fa fa-fw fa-github"></i>GitHub</a>
               </span>
             
               <span class="links-of-author-item">
-                <a href="mailto:dlut_frank@163.com" target="_blank" title="E-Mail" rel="external nofollow">
+                <a href="mailto:dlut_frank@163.com" target="_blank" title="E-Mail">
                   
                     <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
               </span>
