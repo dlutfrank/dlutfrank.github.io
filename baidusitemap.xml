@@ -3,18 +3,17 @@
 
 
     
-    
   <url>
-    <loc>https://shenwenxing.com/android-unit-test</loc>
-    <lastmod>2017-09-09T11:45:50.000Z</lastmod>
+    <loc>https://shenwenxing.com/complie-android-project</loc>
+    <lastmod>2017-09-11T05:04:57.000Z</lastmod>
     <data>
         <display>
-        <title>Android单元测试</title>
-        <pubTime>2016-11-04T04:07:37.000Z</pubTime>
+        <title>Android源码编译踩坑记</title>
+        <pubTime>2016-11-18T11:27:01.000Z</pubTime>
         
         <tag>Android</tag>
          
-        <tag>单元测试</tag>
+        <tag>源码编译</tag>
          
          
            
@@ -25,6 +24,29 @@
     </data>
     </url>
 
+    
+  <url>
+    <loc>https://shenwenxing.com/android-unit-test</loc>
+    <lastmod>2017-09-11T04:02:58.000Z</lastmod>
+    <data>
+        <display>
+        <title>Android单元测试</title>
+        <pubTime>2016-11-04T04:07:37.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>Unit Test</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术" url="https://shenwenxing.com/categories/%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
   <url>
     <loc>https://shenwenxing.com/mvp-android</loc>
@@ -39,28 +61,6 @@
         <tag>MVP</tag>
          
         <tag>设计模式</tag>
-         
-         
-           
-             
-              <breadCrumb title="技术" url="https://shenwenxing.com/categories/%E6%8A%80%E6%9C%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://shenwenxing.com/complie-android-project</loc>
-    <lastmod>2017-09-09T11:40:55.000Z</lastmod>
-    <data>
-        <display>
-        <title>Android源码编译踩坑记</title>
-        <pubTime>2016-11-18T11:27:01.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>源码编译</tag>
          
          
            
@@ -108,7 +108,7 @@
          
            
              
-              <breadCrumb title="工具" url="https://shenwenxing.com/categories/%E5%B7%A5%E5%85%B7/"/>
+              <breadCrumb title="tools" url="https://shenwenxing.com/categories/tools/"/>
           
         </display>
     </data>
