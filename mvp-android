@@ -194,7 +194,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <h1 class="site-subtitle" itemprop="description"></h1>
       
   </div>
 
@@ -351,7 +351,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MVP模式在Android中的应用</h1>
+          <h2 class="post-title" itemprop="name headline">MVP模式在Android中的应用</h2>
         
 
         <div class="post-meta">
@@ -604,7 +604,7 @@
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           
             <p class="site-author-name" itemprop="name">shenwenxing</p>
-            <p class="site-description motion-element" itemprop="description">80后，互联网从业者</p>
+            <p class="site-description motion-element" itemprop="description"></p>
         </div>
 
         <nav class="site-state motion-element">
