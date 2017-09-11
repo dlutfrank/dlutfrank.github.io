@@ -5,7 +5,7 @@
     
     
   <url>
-    <loc>http://shenwenxing.coding.me/android-unit-test.html</loc>
+    <loc>https://shenwenxing.com/android-unit-test</loc>
     <lastmod>2017-09-09T11:45:50.000Z</lastmod>
     <data>
         <display>
@@ -19,7 +19,7 @@
          
            
              
-              <breadCrumb title="技术" url="http://shenwenxing.coding.me/categories/%E6%8A%80%E6%9C%AF/"/>
+              <breadCrumb title="技术" url="https://shenwenxing.com/categories/%E6%8A%80%E6%9C%AF/"/>
           
         </display>
     </data>
@@ -27,7 +27,7 @@
 
     
   <url>
-    <loc>http://shenwenxing.coding.me/mvp-android.html</loc>
+    <loc>https://shenwenxing.com/mvp-android</loc>
     <lastmod>2017-09-09T11:41:14.000Z</lastmod>
     <data>
         <display>
@@ -43,7 +43,7 @@
          
            
              
-              <breadCrumb title="技术" url="http://shenwenxing.coding.me/categories/%E6%8A%80%E6%9C%AF/"/>
+              <breadCrumb title="技术" url="https://shenwenxing.com/categories/%E6%8A%80%E6%9C%AF/"/>
           
         </display>
     </data>
@@ -51,21 +51,21 @@
 
     
   <url>
-    <loc>http://shenwenxing.coding.me/complie-android-project.html</loc>
+    <loc>https://shenwenxing.com/complie-android-project</loc>
     <lastmod>2017-09-09T11:40:55.000Z</lastmod>
     <data>
         <display>
         <title>Android源码编译踩坑记</title>
         <pubTime>2016-11-18T11:27:01.000Z</pubTime>
         
-        <tag>Android</tag>
-         
         <tag>源码编译</tag>
+         
+        <tag>Android</tag>
          
          
            
              
-              <breadCrumb title="技术" url="http://shenwenxing.coding.me/categories/%E6%8A%80%E6%9C%AF/"/>
+              <breadCrumb title="技术" url="https://shenwenxing.com/categories/%E6%8A%80%E6%9C%AF/"/>
           
         </display>
     </data>
@@ -76,7 +76,7 @@
     
     
   <url>
-    <loc>http://shenwenxing.coding.me/creat-blog-with-jekyll.html</loc>
+    <loc>https://shenwenxing.com/creat-blog-with-jekyll</loc>
     <lastmod>2017-09-08T10:18:24.000Z</lastmod>
     <data>
         <display>
@@ -88,7 +88,7 @@
          
            
              
-              <breadCrumb title="blog" url="http://shenwenxing.coding.me/categories/blog/"/>
+              <breadCrumb title="blog" url="https://shenwenxing.com/categories/blog/"/>
           
         </display>
     </data>
@@ -96,7 +96,7 @@
 
     
   <url>
-    <loc>http://shenwenxing.coding.me/mark-down-study.html</loc>
+    <loc>https://shenwenxing.com/mark-down-study</loc>
     <lastmod>2017-09-08T07:17:01.000Z</lastmod>
     <data>
         <display>
@@ -108,7 +108,7 @@
          
            
              
-              <breadCrumb title="工具" url="http://shenwenxing.coding.me/categories/%E5%B7%A5%E5%85%B7/"/>
+              <breadCrumb title="工具" url="https://shenwenxing.com/categories/%E5%B7%A5%E5%85%B7/"/>
           
         </display>
     </data>
