@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>https://shenwenxing.com/guns-germs-and-steel.html</loc>
+    <lastmod>2017-09-11T09:43:13.000Z</lastmod>
+    <data>
+        <display>
+        <title>枪炮、病菌与钢铁</title>
+        <pubTime>2017-05-31T04:31:01.000Z</pubTime>
+        
+        <tag>人类学</tag>
+         
+        <tag>社会学</tag>
+         
+        <tag>历史</tag>
+         
+         
+           
+             
+              <breadCrumb title="读书笔记" url="https://shenwenxing.com/categories/reading/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://shenwenxing.com/android-unit-test.html</loc>
     <lastmod>2017-09-11T07:23:36.000Z</lastmod>
     <data>
@@ -85,10 +109,12 @@
         
         <tag>jekyll</tag>
          
+        <tag>GitPage</tag>
+         
          
            
              
-              <breadCrumb title="blog" url="https://shenwenxing.com/categories/blog/"/>
+              <breadCrumb title="博客搭建" url="https://shenwenxing.com/categories/blog/"/>
           
         </display>
     </data>
