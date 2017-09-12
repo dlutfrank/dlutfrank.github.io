@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>https://shenwenxing.com/complie-android-project.html</loc>
+    <lastmod>2017-09-12T07:10:32.000Z</lastmod>
+    <data>
+        <display>
+        <title>Android源码编译踩坑记</title>
+        <pubTime>2016-11-18T11:27:01.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>源码编译</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程" url="https://shenwenxing.com/categories/programming/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://shenwenxing.com/asking-the-right-questions.html</loc>
     <lastmod>2017-09-12T03:48:41.000Z</lastmod>
     <data>
@@ -21,28 +43,6 @@
            
              
               <breadCrumb title="读书笔记" url="https://shenwenxing.com/categories/reading/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://shenwenxing.com/complie-android-project.html</loc>
-    <lastmod>2017-09-12T03:10:29.000Z</lastmod>
-    <data>
-        <display>
-        <title>Android源码编译踩坑记</title>
-        <pubTime>2016-11-18T11:27:01.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>源码编译</tag>
-         
-         
-           
-             
-              <breadCrumb title="编程" url="https://shenwenxing.com/categories/programming/"/>
           
         </display>
     </data>
