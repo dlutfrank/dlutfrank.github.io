@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>沈文兴的博客</title>
+  <title>沈文兴</title>
   
   
   <link href="/atom.xml" rel="self"/>
@@ -65,6 +65,34 @@
       <category term="社会学" scheme="https://shenwenxing.com/tags/sociology/"/>
     
       <category term="历史" scheme="https://shenwenxing.com/tags/history/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>通往财务自由之路</title>
+    <link href="https://shenwenxing.com/trade-your-way-to-financial-freedom.html"/>
+    <id>https://shenwenxing.com/trade-your-way-to-financial-freedom.html</id>
+    <published>2017-02-28T11:35:19.000Z</published>
+    <updated>2017-09-14T07:06:56.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>刚开始别人给我推荐这本书的时候，我是拒绝的，因为书名太像<code>21天精通xxx</code>系列的书了，后来检索了一些网上的资料，读过该书的对书的评价都比较高，于是我抛弃对书名的偏见尝试读了这本书，读完之后，庆幸自己没有错过这本书，整本书用非常通俗易懂的方式介绍了怎样构建自己的交易系统。</p><a id="more"></a><p>读这本书之前，如果有交易系统的基本概念，读起来会更容易，这里推荐<code>海龟交易法则</code>，海龟交易法则中描述了一个典型的交易系统是什么样子的。如果没有交易系统的概念，建议先阅读本书第七章的7.1节，7.1节中用打雪仗（大名鼎鼎的雪球论坛名字应该是出自这里）的比喻方式介绍了交易系统中六个因素，这六个因素对于理解交易系统非常重要。六大因素分别为：<strong>可靠度</strong>，<strong>利润相对规模</strong>，<strong>交易成本</strong>，<strong>交易的频率</strong>，<strong>头寸的规模</strong>，<strong>资本规模</strong>。为了方便理解，这里对该比喻进行复述，假想你躲在一面巨大的雪墙下面，有人向你的雪墙上扔雪球，雪球有两种，一种是能使雪墙融化的黑色雪球，另一种是能增强雪墙的白色的雪球，你的目标是保持墙面尽可能的大以便获得最大程度的保护。雪墙就是你的初始<strong>资金规模</strong>，白色的雪球代表盈利，黑色雪球代表亏损，扔过来的白球的百分比代表<strong>可靠度</strong>，白球和黑球砸在雪墙上，都会有轻微的破坏作用，代表<strong>交易成本</strong>，单位时间内有多少次雪球扔过来，代表<strong>交易的频率</strong>，两种雪球的相对大小，代表<strong>利润的相对规模</strong>，同时扔过来的雪球个数代表<strong>头寸的规模</strong>，书中用R来表示初始的头寸规模，R在该书中也是一个非常重要的概念。通过该比喻，很容易得出下面的结论：白球的百分比和白球与雪球的相对大小决定了雪墙是呈增强趋势还是融化趋势。单位时间内扔过来的雪球次数越多，则雪球对雪墙本身的破坏性就越大，雪墙的变化速度也会越快。要注意控制同时扔过来的雪球个数，不然坚持不到白球的到来，雪墙就已经全部融化。  </p><p>理解了交易系统的关键因素后，就需要关注怎样去构造自己的交易系统了，交易系统一般包含市场选择，入市，离市，头寸规模的控制，其中离市又包含止损离市和止盈离市，每个人的性格，经历，背景都不一样，适合自己的交易系统也不一样。什么叫适合自己的交易系统，简单的说，就是系统发出相应的信号时，自己愿意去执行，而不是怀疑或者不执行。针对入市，离市，头寸的控制等方面，书中都用了大量的篇幅进行了介绍，可以选择适合自己的条件来构造交易系统。  </p><p>整本书读下来，给我的感觉构建交易系统类似于组织战役，市场的选择类似于战场的选择，要选择适合自己的战场，入市代表什么时候发动冲锋，离市代表什么时候撤退，头寸规模代表先锋队用多少兵力，先锋队如果胜利，则后续的增援跟上，先锋队如果全部折损，则必须撤退，防止造成更多的损失。  </p><p>书中有一点令我产生疑惑，作者坚信不能够通过历史的数据去预测未来的走势，然而在构建交易系统的时候，谈到如何使得整个系统的期望收益为正的时候，使用的方法却是用历史数据进行回测，感觉有点自相矛盾。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;刚开始别人给我推荐这本书的时候，我是拒绝的，因为书名太像&lt;code&gt;21天精通xxx&lt;/code&gt;系列的书了，后来检索了一些网上的资料，读过该书的对书的评价都比较高，于是我抛弃对书名的偏见尝试读了这本书，读完之后，庆幸自己没有错过这本书，整本书用非常通俗易懂的方式介绍了怎样构建自己的交易系统。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="读书笔记" scheme="https://shenwenxing.com/categories/reading/"/>
+    
+    
+      <category term="金融" scheme="https://shenwenxing.com/tags/finance/"/>
+    
+      <category term="投资" scheme="https://shenwenxing.com/tags/investment/"/>
+    
+      <category term="交易系统" scheme="https://shenwenxing.com/tags/trading-system/"/>
+    
+      <category term="雪球理论" scheme="https://shenwenxing.com/tags/snowball-theory/"/>
     
   </entry>
   

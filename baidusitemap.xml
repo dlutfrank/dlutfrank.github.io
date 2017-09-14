@@ -4,6 +4,32 @@
 
     
   <url>
+    <loc>https://shenwenxing.com/trade-your-way-to-financial-freedom.html</loc>
+    <lastmod>2017-09-14T07:06:56.000Z</lastmod>
+    <data>
+        <display>
+        <title>通往财务自由之路</title>
+        <pubTime>2017-02-28T11:35:19.000Z</pubTime>
+        
+        <tag>金融</tag>
+         
+        <tag>投资</tag>
+         
+        <tag>交易系统</tag>
+         
+        <tag>雪球理论</tag>
+         
+         
+           
+             
+              <breadCrumb title="读书笔记" url="https://shenwenxing.com/categories/reading/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://shenwenxing.com/complie-android-project.html</loc>
     <lastmod>2017-09-12T07:10:32.000Z</lastmod>
     <data>
@@ -74,28 +100,6 @@
 
     
   <url>
-    <loc>https://shenwenxing.com/android-unit-test.html</loc>
-    <lastmod>2017-09-11T07:23:36.000Z</lastmod>
-    <data>
-        <display>
-        <title>Android单元测试</title>
-        <pubTime>2016-11-04T04:07:37.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>单元测试</tag>
-         
-         
-           
-             
-              <breadCrumb title="编程" url="https://shenwenxing.com/categories/programming/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://shenwenxing.com/mvp-android.html</loc>
     <lastmod>2017-09-11T07:23:36.000Z</lastmod>
     <data>
@@ -108,6 +112,28 @@
         <tag>MVP</tag>
          
         <tag>设计模式</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程" url="https://shenwenxing.com/categories/programming/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shenwenxing.com/android-unit-test.html</loc>
+    <lastmod>2017-09-11T07:23:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>Android单元测试</title>
+        <pubTime>2016-11-04T04:07:37.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>单元测试</tag>
          
          
            
