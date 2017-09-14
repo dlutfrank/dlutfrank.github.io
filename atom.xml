@@ -97,6 +97,30 @@
   </entry>
   
   <entry>
+    <title>海龟交易法则</title>
+    <link href="https://shenwenxing.com/way-of-the-turtle.html"/>
+    <id>https://shenwenxing.com/way-of-the-turtle.html</id>
+    <published>2017-01-22T23:30:19.000Z</published>
+    <updated>2017-09-14T07:17:08.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>先说下为什么读这本书，前一段时间一直在关注比特币市场的量化交易，据统计，目前火币网和okcoin上的80%订单都是程序自动完成的，有人专门为比特币的程序化交易开发了一个平台，在该平台上，大家反复提到一个策略—海龟策略，经常讨论这个策略在前一波行情表现怎样，怎样去优化它。于是我对该策略产生了兴趣，想深入的了解一下海龟策略。</p><a id="more"></a><p>海龟策略源于1983年两位交易大师理查德.丹尼斯与威廉.埃克哈特之间的一次赌约，赌约的内容是伟大的期货交易者是否能通过后天的培养产生。当时报名的有1000多人，最终有13个人参加了为期两周的培训，该计划称为“海龟计划”，参与海龟计划的人称为“海龟”。本书作者柯蒂斯.费思是当时最成功的海龟，在四年内，实现了其他海龟三倍的盈利。海龟策略严格说起来并不仅仅是一个策略，而是一个交易系统，包含了入市离市，止损，资金管理等方面的内容，非常适合作为量化交易的入门阅读。阅读本书的时候，最好从附录开始阅读，附录中用最精炼的语言介绍了海龟交易法则。</p><p>海龟交易法则中有一个非常重要的概念，叫做ATR(真实波动幅度)，是海龟交易法则头寸规模和风险控制的基础。ATR代表一天内的最大波动幅度，将资金的1%映射为ATR，就能算出每次交易的头寸，通过对不同市场计算相应的头寸规模，就能保证不同市场的每单位头寸在一天内波动幅度不会超过总资金的1%，这样不同市场的投资规模就能相互进行比较，使得管理不同的市场变得容易，海龟系统规定每个市场不能超过4个单位的头寸，相关性市场的头寸不超过6个单位头寸，总的头寸不超过10个，这样就控制了整个账户资金的风险。当价格低于买入价的2ATR的时候，海龟就会卖出所有的头寸，这就是海龟的止损之道。</p><p>在没有接触这本之前，我以为在交易中只需要通过技术指标去预测价格走向，然后低买高卖就能实现盈利，读完这本书后了解到，要想从市场中盈利并没有那么简单，也让我重新认识了市场。市场与市场之间互不相同，有的市场波动频繁，有的市场波动缓慢，不同的策略对不同的市场有不同的适应性，书中也提到过，海龟们使用的趋势策略在比较稳定市场中的表现要优于波动频繁市场的表现。市场还有一个特征，市场中交易的人在交易过程中会影响市场的走向，交易量越大，对市场的影响就越大。如果采用相同策略的人越多，该策略失效的可能性就越大，所以可能不存在对某个市场一直有效的策略，策略也要不断的改进。</p><p>书中作者反复强调的一个观念就是严格坚持自己既定的计划，很多人会在盈利的时候过早的平仓让利润落袋为安，在损失时候不及时止损，以期望市场的反弹，违背自己之前的计划，最终导致亏损。所以，当你制定一个盈利期望为正的系统后，就要严格的坚持。当然，要实现盈利还需要一点运气和长时间的忍耐。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;先说下为什么读这本书，前一段时间一直在关注比特币市场的量化交易，据统计，目前火币网和okcoin上的80%订单都是程序自动完成的，有人专门为比特币的程序化交易开发了一个平台，在该平台上，大家反复提到一个策略—海龟策略，经常讨论这个策略在前一波行情表现怎样，怎样去优化它。于是我对该策略产生了兴趣，想深入的了解一下海龟策略。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="读书笔记" scheme="https://shenwenxing.com/categories/reading/"/>
+    
+    
+      <category term="投资" scheme="https://shenwenxing.com/tags/investment/"/>
+    
+      <category term="交易系统" scheme="https://shenwenxing.com/tags/trading-system/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Android源码编译踩坑记</title>
     <link href="https://shenwenxing.com/complie-android-project.html"/>
     <id>https://shenwenxing.com/complie-android-project.html</id>
@@ -114,9 +138,9 @@
       <category term="编程" scheme="https://shenwenxing.com/categories/programming/"/>
     
     
-      <category term="Android" scheme="https://shenwenxing.com/tags/Android/"/>
-    
       <category term="源码编译" scheme="https://shenwenxing.com/tags/source-code/"/>
+    
+      <category term="Android" scheme="https://shenwenxing.com/tags/Android/"/>
     
   </entry>
   
