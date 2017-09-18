@@ -59,9 +59,9 @@
         <title>Android源码编译踩坑记</title>
         <pubTime>2016-11-18T11:27:01.000Z</pubTime>
         
-        <tag>源码编译</tag>
-         
         <tag>Android</tag>
+         
+        <tag>源码编译</tag>
          
          
            
@@ -122,28 +122,6 @@
 
     
   <url>
-    <loc>https://shenwenxing.com/android-unit-test.html</loc>
-    <lastmod>2017-09-11T07:23:36.000Z</lastmod>
-    <data>
-        <display>
-        <title>Android单元测试</title>
-        <pubTime>2016-11-04T04:07:37.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>单元测试</tag>
-         
-         
-           
-             
-              <breadCrumb title="编程" url="https://shenwenxing.com/categories/programming/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://shenwenxing.com/mvp-android.html</loc>
     <lastmod>2017-09-11T07:23:36.000Z</lastmod>
     <data>
@@ -156,6 +134,28 @@
         <tag>MVP</tag>
          
         <tag>设计模式</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程" url="https://shenwenxing.com/categories/programming/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shenwenxing.com/android-unit-test.html</loc>
+    <lastmod>2017-09-11T07:23:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>Android单元测试</title>
+        <pubTime>2016-11-04T04:07:37.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>单元测试</tag>
          
          
            
