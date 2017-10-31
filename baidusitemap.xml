@@ -5,10 +5,10 @@
     
   <url>
     <loc>https://shenwenxing.com/learing-how-to-learn.html</loc>
-    <lastmod>2017-10-30T13:35:42.000Z</lastmod>
+    <lastmod>2017-10-31T02:14:36.000Z</lastmod>
     <data>
         <display>
-        <title>学习技巧</title>
+        <title>学习之道</title>
         <pubTime>2017-10-30T13:32:27.000Z</pubTime>
         
         <tag>学习方法</tag>
@@ -162,18 +162,16 @@
 
     
   <url>
-    <loc>https://shenwenxing.com/mvp-android.html</loc>
+    <loc>https://shenwenxing.com/android-unit-test.html</loc>
     <lastmod>2017-09-11T07:23:36.000Z</lastmod>
     <data>
         <display>
-        <title>MVP模式在Android中的应用</title>
-        <pubTime>2016-11-10T12:59:44.000Z</pubTime>
+        <title>Android单元测试</title>
+        <pubTime>2016-11-04T04:07:37.000Z</pubTime>
         
         <tag>Android</tag>
          
-        <tag>MVP</tag>
-         
-        <tag>设计模式</tag>
+        <tag>单元测试</tag>
          
          
            
@@ -186,16 +184,18 @@
 
     
   <url>
-    <loc>https://shenwenxing.com/android-unit-test.html</loc>
+    <loc>https://shenwenxing.com/mvp-android.html</loc>
     <lastmod>2017-09-11T07:23:36.000Z</lastmod>
     <data>
         <display>
-        <title>Android单元测试</title>
-        <pubTime>2016-11-04T04:07:37.000Z</pubTime>
+        <title>MVP模式在Android中的应用</title>
+        <pubTime>2016-11-10T12:59:44.000Z</pubTime>
         
         <tag>Android</tag>
          
-        <tag>单元测试</tag>
+        <tag>MVP</tag>
+         
+        <tag>设计模式</tag>
          
          
            
