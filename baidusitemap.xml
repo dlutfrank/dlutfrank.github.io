@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>https://shenwenxing.com/report-financial-report.html</loc>
+    <lastmod>2017-12-04T08:38:30.000Z</lastmod>
+    <data>
+        <display>
+        <title>一本书读懂财报</title>
+        <pubTime>2017-12-04T08:16:25.000Z</pubTime>
+        
+        <tag>金融</tag>
+         
+         
+           
+             
+              <breadCrumb title="读书笔记" url="https://shenwenxing.com/categories/reading/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://shenwenxing.com/learing-how-to-learn.html</loc>
     <lastmod>2017-10-31T02:14:36.000Z</lastmod>
     <data>
@@ -73,9 +93,9 @@
         <title>通往财务自由之路</title>
         <pubTime>2017-02-28T11:35:19.000Z</pubTime>
         
-        <tag>投资</tag>
-         
         <tag>金融</tag>
+         
+        <tag>投资</tag>
          
         <tag>交易系统</tag>
          
@@ -99,9 +119,9 @@
         <title>Android源码编译踩坑记</title>
         <pubTime>2016-11-18T11:27:01.000Z</pubTime>
         
-        <tag>Android</tag>
-         
         <tag>源码编译</tag>
+         
+        <tag>Android</tag>
          
          
            

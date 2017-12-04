@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://shenwenxing.com/"/>
-  <updated>2017-10-31T02:14:36.000Z</updated>
+  <updated>2017-12-04T08:38:30.000Z</updated>
   <id>https://shenwenxing.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一本书读懂财报</title>
+    <link href="https://shenwenxing.com/report-financial-report.html"/>
+    <id>https://shenwenxing.com/report-financial-report.html</id>
+    <published>2017-12-04T08:16:25.000Z</published>
+    <updated>2017-12-04T08:38:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>在读《穷查理宝典》的时候，书中反复强调投资过程中读懂公司财务报表的重要性，从网上查了一下非会计专业的人读懂财报的入门书，不少人推荐了《一本书读懂财报》这本书，作者是清华大学会计学主任肖星老师。读完后，对公司的财务报表有了一定的认识，整本书通俗易懂，适合初学者入门。</p><p>要理解财务报表，得清楚什么是财务报表，以及财务报表有什么作用，我们能用财务报表做些什么。财务报表是财报中很重的一部分，本书中重点介绍了财务报表，它一共包含三张表，分别是资产负债表、利润表和现金流表。</p><a id="more"></a><p>资产负债表由资产、负债以及所有者权益构成，如图（1）所示，通俗的讲，负债和所有者权益表示企业的钱是从哪儿来的，资产表示钱都花在了哪些地方，资产=负债+所有者权益，这是会计中的恒等式。资产分为流动资产和非流动资产，变现能力快速的称为流动资产，否则称为非流动资产，比如货币资金、应收账款、存货都属于流动资产，而厂房、生产机器等属于非流动资产。同理，负债也分为流动负债和非流动负债。</p><p><img src="https://note.youdao.com/yws/api/personal/file/WEB9d90f4e4eb19c41f1af68d831915c9eb?method=download&amp;shareKey=e86f135a0b523d1e8ae19c108c90dd55" alt="资产负债表"></p><center> 图（1） 资产负债表 </center><p>利润表反映了企业究竟有没有赚到钱，利润表中第一个项目是营业收入，企业卖出的产品称为营业收入，卖出的产品是营业成本。营业收入减去营业成本就得到了整个企业的毛利润，毛利润扣掉营业税金以及营业费用，管理费用等就得到了营业利润。营业利润+营业外收入-营业外支出+补贴收入+汇兑损益=利润总额。利润总额-所得税=净利润，而净利润就是企业所赚到的钱。利润表不光反应了企业是否赚到钱，还反应了钱是从哪些地方赚来的，以及长时间内是否能赚到钱。利润表和资产负债表一起反应了企业能活成什么样子。</p><p><img src="https://note.youdao.com/yws/api/personal/file/WEB515648bc3a6dfb2a18b7552ad7fe9a49?method=download&amp;shareKey=c885317212bbdb188f3dcb79ab182e86" alt="利润表"></p><center> 图（2）利润表 </center><p>最后一张表是现金流表，现金流表跟企业的经济活动息息相关，企业的经济活动分为三种，融资、投资和经营。所以现金流表也分为三部分，融资现金流、投资现金流、经营现金流。现金流表向我们展示了资产负债表上货币资金变化的原因。</p><p>有了这三张表，我们就可以从不同的维度去了解企业的状况，在第一个维度上，现金流表描述了一个企业是否能生存下去，即风险的角度；在第二个维度上，资产负债表和利润表反应了企业有多少家底，有多少收益，即收益的视角。要了解一家企业，这两个维度缺一不可。当我们更关注风险的时候，需要分析现金流表，当我们更关注利润的时候，需要分析利润表。</p><p>了解财务报表后，还需要了解一些基本的财务分析方法，才能真正的认识财务报表，财务分析中最常用的是同型分析，同型分析就是算出报表中每一项所占的百分比，根据不同项的比重分析企业的状况。除了同型分析外，还有比率分析等方法。</p><p>对公司财务报表进行分析，就能了解企业的状况，也可以找出企业存在的潜在风险，实际操作过程中，需要合理的选取报表和分析方法。无论是投资还是管理公司，财务报表都是非常重要的辅助手段。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在读《穷查理宝典》的时候，书中反复强调投资过程中读懂公司财务报表的重要性，从网上查了一下非会计专业的人读懂财报的入门书，不少人推荐了《一本书读懂财报》这本书，作者是清华大学会计学主任肖星老师。读完后，对公司的财务报表有了一定的认识，整本书通俗易懂，适合初学者入门。&lt;/p&gt;
+&lt;p&gt;要理解财务报表，得清楚什么是财务报表，以及财务报表有什么作用，我们能用财务报表做些什么。财务报表是财报中很重的一部分，本书中重点介绍了财务报表，它一共包含三张表，分别是资产负债表、利润表和现金流表。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="读书笔记" scheme="https://shenwenxing.com/categories/reading/"/>
+    
+    
+      <category term="金融" scheme="https://shenwenxing.com/tags/finance/"/>
+    
+  </entry>
   
   <entry>
     <title>学习之道</title>
@@ -131,9 +154,9 @@
       <category term="读书笔记" scheme="https://shenwenxing.com/categories/reading/"/>
     
     
-      <category term="投资" scheme="https://shenwenxing.com/tags/investment/"/>
-    
       <category term="金融" scheme="https://shenwenxing.com/tags/finance/"/>
+    
+      <category term="投资" scheme="https://shenwenxing.com/tags/investment/"/>
     
       <category term="交易系统" scheme="https://shenwenxing.com/tags/trading-system/"/>
     
@@ -183,9 +206,9 @@
       <category term="编程" scheme="https://shenwenxing.com/categories/programming/"/>
     
     
-      <category term="Android" scheme="https://shenwenxing.com/tags/Android/"/>
-    
       <category term="源码编译" scheme="https://shenwenxing.com/tags/source-code/"/>
+    
+      <category term="Android" scheme="https://shenwenxing.com/tags/Android/"/>
     
   </entry>
   
