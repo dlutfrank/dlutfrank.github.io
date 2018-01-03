@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://shenwenxing.com/youth.html</loc>
+    
+    <lastmod>2018-01-03T03:04:49.129Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://shenwenxing.com/report-financial-report.html</loc>
     
     <lastmod>2017-12-04T08:38:30.000Z</lastmod>
@@ -58,14 +65,14 @@
   </url>
   
   <url>
-    <loc>https://shenwenxing.com/android-unit-test.html</loc>
+    <loc>https://shenwenxing.com/mvp-android.html</loc>
     
     <lastmod>2017-09-11T07:23:36.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://shenwenxing.com/mvp-android.html</loc>
+    <loc>https://shenwenxing.com/android-unit-test.html</loc>
     
     <lastmod>2017-09-11T07:23:36.000Z</lastmod>
     
